@@ -13,7 +13,7 @@
  * @link       http://pear.php.net/package/Text_Wiki
  */
 
-require_once('Text/Wiki2.php');
+require_once 'Text/Wiki2.php';
 
 /**
  * This is the parser for the Default ruleset. For now, this simply extends Text_Wiki.
@@ -23,5 +23,6 @@ require_once('Text/Wiki2.php');
  * @version    Release: @package_version@
  * @author     Justin Patrin <justinpatrin@php.net>
  */
-class Text_Wiki2_Default extends Text_Wiki2 {
+class Text_Wiki2_Default extends Text_Wiki2
+{
 }
