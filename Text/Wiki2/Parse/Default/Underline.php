@@ -34,9 +34,8 @@
 * 
 */
 
-class Text_Wiki2_Parse_Underline extends Text_Wiki2_Parse {
-    
-    
+class Text_Wiki2_Parse_Default_Underline extends Text_Wiki2_Parse
+{
     /**
     * 
     * The regular expression used to parse the source text and find

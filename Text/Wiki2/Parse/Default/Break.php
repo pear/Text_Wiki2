@@ -31,7 +31,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Break extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Break extends Text_Wiki2_Parse {
     
     
     /**

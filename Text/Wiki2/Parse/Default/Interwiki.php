@@ -32,7 +32,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Interwiki extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Interwiki extends Text_Wiki2_Parse {
     
     // double-colons wont trip up now
     var $regex = '([A-Za-z0-9_]+):((?!:)[A-Za-z0-9_\/=&~#.:;-]+)';

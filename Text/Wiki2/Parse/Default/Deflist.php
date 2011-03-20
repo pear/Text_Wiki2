@@ -35,7 +35,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Deflist extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Deflist extends Text_Wiki2_Parse {
     
     
     /**

@@ -33,7 +33,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_emphasis extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_emphasis extends Text_Wiki2_Parse {
     
     
     /**

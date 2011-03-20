@@ -39,7 +39,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Freelink extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Freelink extends Text_Wiki2_Parse {
     
     var $conf = array (
                        'utf-8' => false

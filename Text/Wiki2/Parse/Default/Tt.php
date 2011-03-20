@@ -37,7 +37,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Tt extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Tt extends Text_Wiki2_Parse {
     
     
     /**

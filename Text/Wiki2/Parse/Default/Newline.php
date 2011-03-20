@@ -32,7 +32,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Newline extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Newline extends Text_Wiki2_Parse {
     
     
     /**

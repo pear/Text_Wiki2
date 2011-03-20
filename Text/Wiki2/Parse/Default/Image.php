@@ -28,7 +28,7 @@
 *
 */
 
-class Text_Wiki2_Parse_Image extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Image extends Text_Wiki2_Parse {
 
     /**
      * URL schemes recognized by this rule.

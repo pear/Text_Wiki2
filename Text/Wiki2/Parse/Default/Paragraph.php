@@ -32,7 +32,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Paragraph extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Paragraph extends Text_Wiki2_Parse {
     
     /**
     * 

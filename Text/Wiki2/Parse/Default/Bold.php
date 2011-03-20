@@ -34,7 +34,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Bold extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Bold extends Text_Wiki2_Parse {
     
     
     /**

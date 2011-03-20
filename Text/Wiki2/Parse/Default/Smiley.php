@@ -30,7 +30,7 @@
  * @link       http://pear.php.net/package/Text_Wiki
  * @see        Text_Wiki2_Parse::Text_Wiki2_Parse()
  */
-class Text_Wiki2_Parse_Smiley extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Smiley extends Text_Wiki2_Parse {
 
     /**
      * Configuration keys for this rule
@@ -91,7 +91,7 @@ class Text_Wiki2_Parse_Smiley extends Text_Wiki2_Parse {
      * @return The parser object
      * @access public
      */
-    function Text_Wiki2_Parse_Smiley(&$obj)
+    function Text_Wiki2_Parse_Default_Smiley(&$obj)
     {
         $default = $this->conf;
         parent::Text_Wiki2_Parse($obj);

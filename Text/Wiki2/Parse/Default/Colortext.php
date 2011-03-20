@@ -28,7 +28,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Colortext extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Colortext extends Text_Wiki2_Parse {
     
     /**
     * 

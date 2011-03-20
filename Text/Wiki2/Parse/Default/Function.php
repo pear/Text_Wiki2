@@ -28,7 +28,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Function extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Function extends Text_Wiki2_Parse {
 
     var $regex = '/^(\<function\>)\n(.+)\n(\<\/function\>)(\s|$)/Umsi';
     

@@ -42,7 +42,8 @@
 *
 */
 
-class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Wikilink extends Text_Wiki2_Parse
+{
 
     var $conf = array (
                        'ext_chars' => false,
@@ -62,7 +63,7 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse {
     *
     */
 
-    function Text_Wiki2_Parse_Wikilink(&$obj)
+    function Text_Wiki2_Parse_Default_Wikilink(&$obj)
     {
         parent::__construct($obj);
 

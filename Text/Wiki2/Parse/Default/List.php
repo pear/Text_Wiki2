@@ -1,5 +1,4 @@
 <?php
-
 /**
 *
 * Parses for bulleted and numbered lists.
@@ -36,9 +35,8 @@
 *
 */
 
-class Text_Wiki2_Parse_List extends Text_Wiki2_Parse {
-
-
+class Text_Wiki2_Parse_Default_List extends Text_Wiki2_Parse
+{
     /**
     *
     * The regular expression used to parse the source text and find
@@ -259,4 +257,3 @@ class Text_Wiki2_Parse_List extends Text_Wiki2_Parse {
         return "\n\n" . $return . "\n\n";
     }
 }
-?>

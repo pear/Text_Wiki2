@@ -49,9 +49,8 @@
 * 
 */
 
-class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
-    
-    
+class Text_Wiki2_Parse_Default_Url extends Text_Wiki2_Parse
+{
     /**
     * 
     * Keeps a running count of numbered-reference URLs.

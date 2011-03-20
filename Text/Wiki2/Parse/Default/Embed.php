@@ -38,7 +38,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Embed extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Default_Embed extends Text_Wiki2_Parse {
     
     var $conf = array(
         'base' => '/path/to/scripts/'
