@@ -20,7 +20,7 @@
 /**
  * Text transformation engine
  */
-require_once 'Text/Wiki/BBCode.php';
+require_once 'Text/Wiki2/BBCode.php';
 
 /**
  * PEAR base class to get the static properties

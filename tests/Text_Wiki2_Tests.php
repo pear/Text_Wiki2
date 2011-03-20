@@ -2,7 +2,7 @@
 
 require_once 'PEAR.php';
 require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Text/Wiki.php';
+require_once 'Text/Wiki2.php';
 
 class Text_Wiki2_Tests extends PHPUnit_Framework_TestCase
 {
@@ -429,34 +429,34 @@ class Text_Wiki2_Tests extends PHPUnit_Framework_TestCase
 
     public function testAddPathShouldAddDirToExistentType()
     {
-        $path = array('parse' => array('Text/Wiki/Parse/Default/'), 'render' => array());
-        $this->obj->addPath('parse', 'Text/Wiki/Parse/Default/');
+        $path = array('parse' => array('Text/Wiki2/Parse/Default/'), 'render' => array());
+        $this->obj->addPath('parse', 'Text/Wiki2/Parse/Default/');
         $this->assertEquals($path, $this->obj->path);
         
         // dir without trailing trailing slash
-        $path = array('parse' => array('Text/Wiki/Parse/Other/', 'Text/Wiki/Parse/Default/'), 'render' => array());
-        $this->obj->addPath('parse', 'Text/Wiki/Parse/Other');
+        $path = array('parse' => array('Text/Wiki2/Parse/Other/', 'Text/Wiki2/Parse/Default/'), 'render' => array());
+        $this->obj->addPath('parse', 'Text/Wiki2/Parse/Other');
         $this->assertEquals($path, $this->obj->path);
     }
     
     public function testAddPathCreateTypeAndThenAddDir()
     {
         $this->obj->path = array();
-        $path = array('parse' => array('Text/Wiki/Parse/Default/'));
-        $this->obj->addPath('parse', 'Text/Wiki/Parse/Default/');
+        $path = array('parse' => array('Text/Wiki2/Parse/Default/'));
+        $this->obj->addPath('parse', 'Text/Wiki2/Parse/Default/');
         $this->assertEquals($path, $this->obj->path);
     }
     
     public function testGetPathShouldReturnPathArray()
     {
-        $path = array('parse' => array('Text/Wiki/Parse/Default/', 'Text/Wiki/Parse/Other/'), 'render' => array('Text/Wiki/Parse/Xhtml/'));
+        $path = array('parse' => array('Text/Wiki2/Parse/Default/', 'Text/Wiki2/Parse/Other/'), 'render' => array('Text/Wiki2/Parse/Xhtml/'));
         $this->obj->path = $path;
         $this->assertEquals($path, $this->obj->getPath());
     }
 
     public function testGetPathShouldReturnTypePaths()
     {
-        $path = array('parse' => array('Text/Wiki/Parse/Default/', 'Text/Wiki/Parse/Other/'), 'render' => array('Text/Wiki/Parse/Xhtml/'));
+        $path = array('parse' => array('Text/Wiki2/Parse/Default/', 'Text/Wiki2/Parse/Other/'), 'render' => array('Text/Wiki2/Parse/Xhtml/'));
         $this->obj->path = $path;
         $this->assertEquals($path['parse'], $this->obj->getPath('parse'));
         $this->assertEquals($path['render'], $this->obj->getPath('render'));
@@ -464,7 +464,7 @@ class Text_Wiki2_Tests extends PHPUnit_Framework_TestCase
     
     public function testGetPathShouldReturnEmptyArray()
     {
-        $path = array('parse' => array('Text/Wiki/Parse/Default/', 'Text/Wiki/Parse/Other/'), 'render' => array('Text/Wiki/Parse/Xhtml/'));
+        $path = array('parse' => array('Text/Wiki2/Parse/Default/', 'Text/Wiki2/Parse/Other/'), 'render' => array('Text/Wiki2/Parse/Xhtml/'));
         $this->obj->path = $path;
         $this->assertEquals(array(), $this->obj->getPath('InexistentType'));
     }

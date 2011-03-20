@@ -5,7 +5,7 @@ Text_Wiki2_BBCode_Parse_List
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 
-require_once 'Text/Wiki.php';
+require_once 'Text/Wiki2.php';
 $t = Text_Wiki2::factory('BBCode', array('List'));
 
 $t->parse(

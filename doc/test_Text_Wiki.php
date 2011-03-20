@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 // needed for error checking
 require_once 'PEAR.php';
 // base class
-require_once 'Text/Wiki.php';
+require_once 'Text/Wiki2.php';
 /**
  * Eventually set an include path if all parsers/renderers not installed
  * $Id$

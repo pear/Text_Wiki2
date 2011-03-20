@@ -18,7 +18,7 @@
 /**
  * "master" class for handling the management and convenience
  */
-require_once('Text/Wiki.php');
+require_once('Text/Wiki2.php');
 
 /**
  * Base Text_Wiki2 handler class extension for Mediawiki markup

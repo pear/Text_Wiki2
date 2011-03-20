@@ -27,7 +27,7 @@
  *
  */
 
-require_once 'Text/Wiki.php';
+require_once 'Text/Wiki2.php';
 
 /**
  *

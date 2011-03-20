@@ -16,7 +16,7 @@
 /**
  * The wikilink render class.
  */
-require_once 'Text/Wiki/Render/Docbook/Wikilink.php';
+require_once 'Text/Wiki2/Render/Docbook/Wikilink.php';
 
 /**
  * This class renders free links in DocBook.

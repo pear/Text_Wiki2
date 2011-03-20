@@ -6,7 +6,7 @@ Text_Wiki2_Creole_Parse_Url
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
 include 'config.php';
-require_once 'Text/Wiki.php';
+require_once 'Text/Wiki2.php';
 $t = Text_Wiki2::factory('Creole', array('Url'));
 $t->parse('
 [[http://www.example.com/page|An example page]]

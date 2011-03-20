@@ -1,8 +1,8 @@
 <?php
 
 require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Text/Wiki.php';
-require_once 'Text/Wiki/Parse/Default/List.php';
+require_once 'Text/Wiki2.php';
+require_once 'Text/Wiki2/Parse/Default/List.php';
 
 // class to test the Text_Wiki2::transform() with different wiki markups
 class Text_Wiki2_BugTests extends PHPUnit_Framework_TestCase

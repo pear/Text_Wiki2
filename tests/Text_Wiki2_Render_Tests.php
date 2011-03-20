@@ -1,10 +1,10 @@
 <?php
 
 require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Text/Wiki.php';
-require_once 'Text/Wiki/Render.php';
-require_once 'Text/Wiki/Render/Xhtml.php';
-require_once 'Text/Wiki/Render/Xhtml/Address.php';
+require_once 'Text/Wiki2.php';
+require_once 'Text/Wiki2/Render.php';
+require_once 'Text/Wiki2/Render/Xhtml.php';
+require_once 'Text/Wiki2/Render/Xhtml/Address.php';
 
 class Text_Wiki2_Render_Tests extends PHPUnit_Framework_TestCase
 {

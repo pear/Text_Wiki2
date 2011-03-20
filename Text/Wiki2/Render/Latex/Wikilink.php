@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Text/Wiki/Render.php';
+require_once 'Text/Wiki2/Render.php';
 
 class Text_Wiki2_Render_Latex_Wikilink extends Text_Wiki2_Render
 {

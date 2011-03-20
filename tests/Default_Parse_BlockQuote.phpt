@@ -5,7 +5,7 @@ Text_Wiki2_Default_Blockquote
 --FILE--
 <?php
 include 'config.php';
-require_once 'Text/Wiki.php';
+require_once 'Text/Wiki2.php';
 $t = Text_Wiki2::factory('Default', array('Blockquote'));
 $t->parse('
 > test 1

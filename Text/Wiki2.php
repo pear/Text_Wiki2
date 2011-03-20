@@ -383,11 +383,11 @@ class Text_Wiki2
 
         $this->addPath(
             'parse',
-            $this->fixPath(dirname(__FILE__)) . 'Wiki/Parse/Default/'
+            $this->fixPath(dirname(__FILE__)) . 'Wiki2/Parse/Default/'
         );
         $this->addPath(
             'render',
-            $this->fixPath(dirname(__FILE__)) . 'Wiki/Render/'
+            $this->fixPath(dirname(__FILE__)) . 'Wiki2/Render/'
         );
 
     }

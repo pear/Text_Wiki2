@@ -1,27 +1,27 @@
 <?php
 
 require_once 'PHPUnit/Framework/TestCase.php';
-require_once 'Text/Wiki/Mediawiki.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Break.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Code.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Comment.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Deflist.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Emphasis.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Heading.php';
-require_once 'Text/Wiki/Parse/Mediawiki/List.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Newline.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Preformatted.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Raw.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Redirect.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Subscript.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Superscript.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Table.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Tt.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Url.php';
-require_once 'Text/Wiki/Parse/Mediawiki/Wikilink.php';
+require_once 'Text/Wiki2/Mediawiki.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Break.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Code.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Comment.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Deflist.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Emphasis.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Heading.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/List.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Newline.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Preformatted.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Raw.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Redirect.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Subscript.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Superscript.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Table.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Tt.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Url.php';
+require_once 'Text/Wiki2/Parse/Mediawiki/Wikilink.php';
 
 // default parse rules used by Mediawiki parser
-require_once 'Text/Wiki/Parse/Default/Horiz.php';
+require_once 'Text/Wiki2/Parse/Default/Horiz.php';
 
 class Text_Wiki2_Parse_Mediawiki_AllTests extends PHPUnit_Framework_TestSuite
 {
