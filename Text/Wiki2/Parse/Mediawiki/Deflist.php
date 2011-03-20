@@ -31,7 +31,7 @@
 * @author Moritz Venn <ritzmo@php.net>
 * 
 */
-class Text_Wiki2_Parse_Deflist extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Mediawiki_Deflist extends Text_Wiki2_Parse {
     
     /**
     * The regular expression used to parse the source text and find

@@ -38,7 +38,7 @@
  * @link       http://pear.php.net/package/Text_Wiki
  * @see        Text_Wiki2_Parse::Text_Wiki2_Parse()
  */
-class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
 
     /**
      * Configuration for this rule (Wikilink)
@@ -96,7 +96,7 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse {
      * @return The parser object
      * @access public
      */
-    function Text_Wiki2_Parse_Wikilink(&$obj)
+    function Text_Wiki2_Parse_Mediawiki_Wikilink(&$obj)
     {
         $default = $this->conf;
         parent::Text_Wiki2_Parse($obj);

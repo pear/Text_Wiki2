@@ -39,7 +39,7 @@
  * @link       http://pear.php.net/package/Text_Wiki
  * @see        Text_Wiki2_Parse::Text_Wiki2_Parse()
  */
-class Text_Wiki2_Parse_Emphasis extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Mediawiki_Emphasis extends Text_Wiki2_Parse {
 
     /**
      * Split $this->wiki->source by line break and call $this->process()

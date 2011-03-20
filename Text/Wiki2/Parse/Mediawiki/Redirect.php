@@ -29,7 +29,7 @@
 * 
 */
 
-class Text_Wiki2_Parse_Redirect extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Mediawiki_Redirect extends Text_Wiki2_Parse {
     
     
     /**

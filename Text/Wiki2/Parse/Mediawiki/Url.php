@@ -48,7 +48,7 @@
  * @link       http://pear.php.net/package/Text_Wiki
  * @see        Text_Wiki2_Parse::Text_Wiki2_Parse()
  */
-class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
+class Text_Wiki2_Parse_Mediawiki_Url extends Text_Wiki2_Parse {
     
     /**
     * Keeps a running count of numbered-reference URLs.
@@ -85,7 +85,7 @@ class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
     * 
     * @access public
     */
-    function Text_Wiki2_Parse_Url(&$obj)
+    function Text_Wiki2_Parse_Mediawiki_Url(&$obj)
     {
         parent::Text_Wiki2_Parse($obj);
         
