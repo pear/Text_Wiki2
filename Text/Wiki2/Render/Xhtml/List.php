@@ -23,8 +23,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki2_Render_Xhtml_List extends Text_Wiki2_Render {
-
+class Text_Wiki2_Render_Xhtml_List extends Text_Wiki2_Render
+{
     var $conf = array(
         'css_ol' => null,
         'css_ol_li' => null,
