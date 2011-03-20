@@ -56,9 +56,9 @@ class Text_Wiki2_Parse_Freelink extends Text_Wiki2_Parse {
     * 
     */
     
-    function Text_Wiki2_Parse_Freelink(&$obj)
+    function __construct($obj)
     {
-        parent::Text_Wiki2_Parse($obj);
+        parent::__construct($obj);
         if ($this->getConf('utf-8')) {
             $any = '\p{L}';
         } else {
