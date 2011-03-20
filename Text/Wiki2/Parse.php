@@ -37,7 +37,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki2_Parse {
+class Text_Wiki2_Parse
+{
 
 
     /**
@@ -105,13 +106,12 @@ class Text_Wiki2_Parse {
     * @param object &$obj The calling "parent" Text_Wiki2 object.
     *
     */
-
-    function Text_Wiki2_Parse(&$obj)
+    function __construct($obj)
     {
         // set the reference to the calling Text_Wiki2 object;
         // this allows us access to the shared source text, token
         // array, etc.
-        $this->wiki =& $obj;
+        $this->wiki = $obj;
 
         // set the name of this rule; generally used when adding
         // to the tokens array. strip off the Text_Wiki2_Parse_ portion.
@@ -261,4 +261,3 @@ class Text_Wiki2_Parse {
 
     }
 }
-?>
