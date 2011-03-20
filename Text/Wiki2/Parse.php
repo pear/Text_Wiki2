@@ -17,7 +17,7 @@
  * Baseline rule class for extension into a "real" parser component.
  *
  * Text_Wiki2_Rule classes do not stand on their own; they are called by a
- * Text_Wiki object, typcially in the transform() method. Each rule class
+ * Text_Wiki2 object, typcially in the transform() method. Each rule class
  * performs three main activities: parse, process, and render.
  *
  * The parse() method takes a regex and applies it to the whole block of
@@ -83,7 +83,7 @@ class Text_Wiki2_Parse {
 
     /**
     *
-    * A reference to the calling Text_Wiki object.
+    * A reference to the calling Text_Wiki2 object.
     *
     * This is needed so that each rule has access to the same source
     * text, token set, URLs, interwiki maps, page names, etc.
@@ -102,13 +102,13 @@ class Text_Wiki2_Parse {
     *
     * @access public
     *
-    * @param object &$obj The calling "parent" Text_Wiki object.
+    * @param object &$obj The calling "parent" Text_Wiki2 object.
     *
     */
 
     function Text_Wiki2_Parse(&$obj)
     {
-        // set the reference to the calling Text_Wiki object;
+        // set the reference to the calling Text_Wiki2 object;
         // this allows us access to the shared source text, token
         // array, etc.
         $this->wiki =& $obj;

@@ -23,45 +23,45 @@ require_once 'Text/Wiki/Parse/Mediawiki/Wikilink.php';
 // default parse rules used by Mediawiki parser
 require_once 'Text/Wiki/Parse/Default/Horiz.php';
 
-class Text_Wiki_Parse_Mediawiki_AllTests extends PHPUnit_Framework_TestSuite
+class Text_Wiki2_Parse_Mediawiki_AllTests extends PHPUnit_Framework_TestSuite
 {
     
     public static function suite()
     {
-        $suite = new PHPUnit_Framework_TestSuite('Text_Wiki_Render_Mediawiki_TestSuite');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Break_Test');
-        /*$suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Code_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Comment_Test');*/
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Deflist_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Emphasis_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Heading_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Horiz_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_List_Test');
-        //$suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Newline_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Preformatted_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Raw_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Redirect_Test');
-        /*$suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Subscript_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Superscript_Test');*/
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Table_Test');
-        //$suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Tt_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Url_Test');
-        $suite->addTestSuite('Text_Wiki_Parse_Mediawiki_Wikilink_Test');
+        $suite = new PHPUnit_Framework_TestSuite('Text_Wiki2_Render_Mediawiki_TestSuite');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Break_Test');
+        /*$suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Code_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Comment_Test');*/
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Deflist_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Emphasis_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Heading_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Horiz_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_List_Test');
+        //$suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Newline_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Preformatted_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Raw_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Redirect_Test');
+        /*$suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Subscript_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Superscript_Test');*/
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Table_Test');
+        //$suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Tt_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Url_Test');
+        $suite->addTestSuite('Text_Wiki2_Parse_Mediawiki_Wikilink_Test');
         
         return $suite;
     }
     
 }
 
-class Text_Wiki_Parse_Mediawiki_SetUp_Tests extends PHPUnit_Framework_TestCase
+class Text_Wiki2_Parse_Mediawiki_SetUp_Tests extends PHPUnit_Framework_TestCase
 {
 
     protected function setUp()
     {
-        $obj = Text_Wiki::factory('Mediawiki');
+        $obj = Text_Wiki2::factory('Mediawiki');
         $testClassName = get_class($this);
-        $ruleName = preg_replace('/Text_Wiki_Parse_Mediawiki_(.+?)_Test/', '\\1', $testClassName);
-        $this->className = 'Text_Wiki_Parse_' . $ruleName;
+        $ruleName = preg_replace('/Text_Wiki2_Parse_Mediawiki_(.+?)_Test/', '\\1', $testClassName);
+        $this->className = 'Text_Wiki2_Parse_' . $ruleName;
         $this->t = new $this->className($obj);
 
         if (file_exists(dirname(__FILE__) . '/fixtures/mediawiki_syntax_to_test_' . strtolower($ruleName) . '.txt')) {
@@ -75,7 +75,7 @@ class Text_Wiki_Parse_Mediawiki_SetUp_Tests extends PHPUnit_Framework_TestCase
     
 }
 
-class Text_Wiki_Parse_Mediawiki_Break_Test extends Text_Wiki_Parse_Mediawiki_SetUp_Tests
+class Text_Wiki2_Parse_Mediawiki_Break_Test extends Text_Wiki2_Parse_Mediawiki_SetUp_Tests
 {
     
     public function testMediawikiParseBreakProcess()
@@ -100,7 +100,7 @@ class Text_Wiki_Parse_Mediawiki_Break_Test extends Text_Wiki_Parse_Mediawiki_Set
     
 }
 
-class Text_Wiki_Parse_Mediawiki_Deflist_Test extends Text_Wiki_Parse_Mediawiki_SetUp_Tests
+class Text_Wiki2_Parse_Mediawiki_Deflist_Test extends Text_Wiki2_Parse_Mediawiki_SetUp_Tests
 {
     
     public function testMediawikiParseDeflistProcess()
@@ -155,13 +155,13 @@ class Text_Wiki_Parse_Mediawiki_Deflist_Test extends Text_Wiki_Parse_Mediawiki_S
 }
 
 
-class Text_Wiki_Parse_Mediawiki_Emphasis_Test extends PHPUnit_Framework_TestCase 
+class Text_Wiki2_Parse_Mediawiki_Emphasis_Test extends PHPUnit_Framework_TestCase 
 {
 
     public function testMediawikiParseEmphasisParse()
     {
-        $obj = $this->getMock('Text_Wiki_Parse_Emphasis', array('process'), array(), 'Text_Wiki_Parse_Emphasis_Parse_Mock', false);
-        $obj->wiki = $this->getMock('Text_Wiki');
+        $obj = $this->getMock('Text_Wiki2_Parse_Emphasis', array('process'), array(), 'Text_Wiki2_Parse_Emphasis_Parse_Mock', false);
+        $obj->wiki = $this->getMock('Text_Wiki2');
         $obj->wiki->source = file_get_contents(dirname(__FILE__) . '/fixtures/mediawiki_syntax.txt');
 
         $lines = explode("\n", $obj->wiki->source);
@@ -173,8 +173,8 @@ class Text_Wiki_Parse_Mediawiki_Emphasis_Test extends PHPUnit_Framework_TestCase
 
     public function testMediawikiParseEmphasisProcess()
     {
-        $textwiki = Text_Wiki::factory('Mediawiki');
-        $obj = new Text_Wiki_Parse_Emphasis($textwiki);
+        $textwiki = Text_Wiki2::factory('Mediawiki');
+        $obj = new Text_Wiki2_Parse_Emphasis($textwiki);
 
         $lines = array(
             "'''Bold text''' and ''italic text'' and even '''''bold italic text'''''",
@@ -231,7 +231,7 @@ class Text_Wiki_Parse_Mediawiki_Emphasis_Test extends PHPUnit_Framework_TestCase
     
 }
 
-class Text_Wiki_Parse_Mediawiki_Heading_Test extends Text_Wiki_Parse_Mediawiki_SetUp_Tests
+class Text_Wiki2_Parse_Mediawiki_Heading_Test extends Text_Wiki2_Parse_Mediawiki_SetUp_Tests
 {
     
     public function testMediawikiParseHeadingProcess()
@@ -269,7 +269,7 @@ class Text_Wiki_Parse_Mediawiki_Heading_Test extends Text_Wiki_Parse_Mediawiki_S
 }
 
 // Mediawiki parse uses horiz rule from default parser
-class Text_Wiki_Parse_Mediawiki_Horiz_Test extends Text_Wiki_Parse_Mediawiki_SetUp_Tests
+class Text_Wiki2_Parse_Mediawiki_Horiz_Test extends Text_Wiki2_Parse_Mediawiki_SetUp_Tests
 {
     
     public function testMediawikiParseHorizProcess()
@@ -299,7 +299,7 @@ class Text_Wiki_Parse_Mediawiki_Horiz_Test extends Text_Wiki_Parse_Mediawiki_Set
     
 }
 
-class Text_Wiki_Parse_Mediawiki_List_Test extends Text_Wiki_Parse_Mediawiki_SetUp_Tests
+class Text_Wiki2_Parse_Mediawiki_List_Test extends Text_Wiki2_Parse_Mediawiki_SetUp_Tests
 {
      
     public function testMediawikiParseListProcess()
@@ -431,13 +431,13 @@ class Text_Wiki_Parse_Mediawiki_List_Test extends Text_Wiki_Parse_Mediawiki_SetU
     
 }
 
-class Text_Wiki_Parse_Mediawiki_Preformatted_Test extends Text_Wiki_Parse_Mediawiki_SetUp_Tests
+class Text_Wiki2_Parse_Mediawiki_Preformatted_Test extends Text_Wiki2_Parse_Mediawiki_SetUp_Tests
 {
      
     public function testMediawikiParsePreformattedProcess()
     {
         $matches1 = array(0 => "<pre>pre tag without line break</pre>", 1 => 'pre tag without line break');
-        // not sure why Text_Wiki_Parse_Preformatted uses $matches[2]
+        // not sure why Text_Wiki2_Parse_Preformatted uses $matches[2]
         $matches2 = array(0 => "<pre>pre tag without line break</pre>", 1 => 'pre tag without line break', 2 => 'some text');
         
         $this->assertRegExp("/\d+?/", $this->t->process($matches1));
@@ -480,7 +480,7 @@ It still interprets special characters:
     
 }
 
-class Text_Wiki_Parse_Mediawiki_Raw_Test extends Text_Wiki_Parse_Mediawiki_SetUp_Tests
+class Text_Wiki2_Parse_Mediawiki_Raw_Test extends Text_Wiki2_Parse_Mediawiki_SetUp_Tests
 {
      
     public function testMediawikiParseRawProcess()
@@ -524,7 +524,7 @@ characters: &rarr;",
     
 }
 
-class Text_Wiki_Parse_Mediawiki_Redirect_Test extends Text_Wiki_Parse_Mediawiki_SetUp_Tests
+class Text_Wiki2_Parse_Mediawiki_Redirect_Test extends Text_Wiki2_Parse_Mediawiki_SetUp_Tests
 {
     
     public function testMediawikiParseRedirectProcess()
@@ -556,7 +556,7 @@ class Text_Wiki_Parse_Mediawiki_Redirect_Test extends Text_Wiki_Parse_Mediawiki_
     
 }
 
-class Text_Wiki_Parse_Mediawiki_Table_Test extends Text_Wiki_Parse_Mediawiki_SetUp_Tests
+class Text_Wiki2_Parse_Mediawiki_Table_Test extends Text_Wiki2_Parse_Mediawiki_SetUp_Tests
 {
     
     public function testMediawikiParseTableProcess()
@@ -629,7 +629,7 @@ class Text_Wiki_Parse_Mediawiki_Table_Test extends Text_Wiki_Parse_Mediawiki_Set
 }
 
 
-class Text_Wiki_Parse_Mediawiki_Wikilink_Test extends Text_Wiki_Parse_Mediawiki_SetUp_Tests
+class Text_Wiki2_Parse_Mediawiki_Wikilink_Test extends Text_Wiki2_Parse_Mediawiki_SetUp_Tests
 {
     
     public function testMediawikiParseWikilinkProcessWithSpaceUnderscoreFalse()
@@ -686,13 +686,13 @@ class Text_Wiki_Parse_Mediawiki_Wikilink_Test extends Text_Wiki_Parse_Mediawiki_
     
 }
 
-class Text_Wiki_Parse_Mediawiki_Url_Test extends PHPUnit_Framework_TestCase
+class Text_Wiki2_Parse_Mediawiki_Url_Test extends PHPUnit_Framework_TestCase
 {
 
     protected function setUp()
     {
-        $textWiki = new Text_Wiki('Mediawiki');
-        $this->obj = new Text_Wiki_Parse_Url($textWiki);
+        $textWiki = new Text_Wiki2('Mediawiki');
+        $this->obj = new Text_Wiki2_Parse_Url($textWiki);
     }
 
     public function testMediawikiParseUrlParse()
@@ -715,9 +715,9 @@ class Text_Wiki_Parse_Mediawiki_Url_Test extends PHPUnit_Framework_TestCase
 
 /*    public function testMediawikiParseUrlParseWithMocking()
     {
-        // NOT WORKING: unable to mock the class Text_Wiki_Parse_Url using its constructor
-        $textWiki = Text_Wiki::factory('Mediawiki');
-        $obj = $this->getMock('Text_Wiki_Parse_Url',
+        // NOT WORKING: unable to mock the class Text_Wiki2_Parse_Url using its constructor
+        $textWiki = Text_Wiki2::factory('Mediawiki');
+        $obj = $this->getMock('Text_Wiki2_Parse_Url',
             array('process', 'processWithoutProtocol', 'processInlineEmail', 'processFootnote', 'processOrdinary', 'processDescr'),
             array($textWiki),
         );

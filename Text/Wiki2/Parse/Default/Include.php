@@ -67,7 +67,7 @@ class Text_Wiki2_Parse_Include extends Text_Wiki2_Parse {
     /**
     * 
     * Includes the results of the script directly into the source; the output
-    * will subsequently be parsed by the remaining Text_Wiki rules.
+    * will subsequently be parsed by the remaining Text_Wiki2 rules.
     * 
     * @access public
     *

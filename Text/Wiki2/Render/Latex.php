@@ -2,7 +2,7 @@
 
 /**
 * 
-* Formats parsed Text_Wiki for LaTeX rendering.
+* Formats parsed Text_Wiki2 for LaTeX rendering.
 * 
 * $Id$
 * 

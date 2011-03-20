@@ -56,14 +56,14 @@ if (in_array(php_sapi_name(), array('cli', 'cgi'))) {
     }
 }
 
-// instantiate a Text_Wiki object from the given class
-$wiki = & Text_Wiki::singleton($parser);
+// instantiate a Text_Wiki2 object from the given class
+$wiki = & Text_Wiki2::singleton($parser);
 
 // If you want to include rules, use
-//$wiki = & Text_Wiki::singleton($parser, $rules);
+//$wiki = & Text_Wiki2::singleton($parser, $rules);
 
 // If you want to get a new copy of the class use factory
-//$wiki =& Text_Wiki::factory($parser);
+//$wiki =& Text_Wiki2::factory($parser);
 
 //print "<pre>\n";
 //print_r($wiki);
@@ -122,7 +122,7 @@ function bldHtml($result, $plist, $rlist, $elist) {
 <html>
 
 <head>
-  <title>PEAR::Text_Wiki Demo</title>
+  <title>PEAR::Text_Wiki2 Demo</title>
   <meta name="AUTHOR" content="bertrand Gugger / Toggg">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="KEYWORDS" content="PEAR, Wiki, Parse, Render, Convert, PHP, BBCode, Xhtml, Plain, Latex">
@@ -141,7 +141,7 @@ function bldHtml($result, $plist, $rlist, $elist) {
   </style>
 </head>
 <body>
-<h3>PEAR::Text_Wiki Demo</h3>
+<h3>PEAR::Text_Wiki2 Demo</h3>
 <div style="float: left;">
 <FORM method="post">
 Translate from

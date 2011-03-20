@@ -2,7 +2,7 @@
 // vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4:
 /**
  * Parse structured wiki text and render into arbitrary formats such as XHTML.
- * This is the Text_Wiki extension for Mediawiki markup
+ * This is the Text_Wiki2 extension for Mediawiki markup
  *
  * PHP version 5
  *
@@ -21,7 +21,7 @@
 require_once('Text/Wiki.php');
 
 /**
- * Base Text_Wiki handler class extension for Mediawiki markup
+ * Base Text_Wiki2 handler class extension for Mediawiki markup
  *
  * @category   Text
  * @package    Text_Wiki
@@ -29,9 +29,9 @@ require_once('Text/Wiki.php');
  * @license    http://www.gnu.org/copyleft/lesser.html  LGPL License 2.1
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
- * @see        Text_Wiki::Text_Wiki()
+ * @see        Text_Wiki2::Text_Wiki2()
  */
-class Text_Wiki2_Mediawiki extends Text_Wiki {
+class Text_Wiki2_Mediawiki extends Text_Wiki2 {
     var $rules = array(
         'Prefilter',
         'Delimiter',
@@ -87,7 +87,7 @@ class Text_Wiki2_Mediawiki extends Text_Wiki {
      * @param array $rules The set of rules to load for this object.
      */
     function Text_Wiki2_Mediawiki($rules = null) {
-        parent::Text_Wiki($rules);
+        parent::Text_Wiki2($rules);
         $this->addPath('parse', $this->fixPath(dirname(__FILE__)).'Parse/Mediawiki');
     }
 }

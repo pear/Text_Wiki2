@@ -1,12 +1,12 @@
 --TEST--
-Text_Wiki_BBCode_Parse_List
+Text_Wiki2_BBCode_Parse_List
 --FILE--
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 
 require_once 'Text/Wiki.php';
-$t = Text_Wiki::factory('BBCode', array('List'));
+$t = Text_Wiki2::factory('BBCode', array('List'));
 
 $t->parse(
 

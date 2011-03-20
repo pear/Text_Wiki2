@@ -6,13 +6,13 @@ require_once 'Text/Wiki/Render.php';
 require_once 'Text/Wiki/Render/Xhtml.php';
 require_once 'Text/Wiki/Render/Xhtml/Address.php';
 
-class Text_Wiki_Render_Tests extends PHPUnit_Framework_TestCase
+class Text_Wiki2_Render_Tests extends PHPUnit_Framework_TestCase
 {
 
     protected function setUp()
     {
-        $obj = Text_Wiki::singleton();
-        $this->obj = new Text_Wiki_Render($obj);
+        $obj = Text_Wiki2::singleton();
+        $this->obj = new Text_Wiki2_Render($obj);
 
         $this->conf = array('firstConf' => 'firstConfValue', 
                             'secondConf' => 'secondConfValue',
@@ -24,22 +24,22 @@ class Text_Wiki_Render_Tests extends PHPUnit_Framework_TestCase
 
     public function testTextWikiRenderConstructor()
     {
-        /* It is hard to test directly the constructor of the class Text_Wiki_Render as it
+        /* It is hard to test directly the constructor of the class Text_Wiki2_Render as it
          * internally has logic expecting a child class name (to define the $this->rule and
          * $this->format variables). That is why we are creating an instance of
-         * Text_Wiki_Render_Xhtml and Text_Wiki_Render_Xhtml_Address instead. If you have a
+         * Text_Wiki2_Render_Xhtml and Text_Wiki2_Render_Xhtml_Address instead. If you have a
          * better idea feel free to improve this test
          */ 
-        $wiki = Text_Wiki::singleton();
+        $wiki = Text_Wiki2::singleton();
         
-        $obj = new Text_Wiki_Render_Xhtml($wiki);
-        $this->assertEquals($wiki, $obj->wiki, 'Should set reference to Text_Wiki object');
+        $obj = new Text_Wiki2_Render_Xhtml($wiki);
+        $this->assertEquals($wiki, $obj->wiki, 'Should set reference to Text_Wiki2 object');
         $this->assertEquals('Xhtml', $obj->format);
         $this->assertNull($obj->rule);
         $this->assertEquals(array('translate' => 1, 'quotes' => 2, 'charset' => 'ISO-8859-1'), $obj->conf);
 
-        $obj = new Text_Wiki_Render_Xhtml_Address($wiki);
-        $this->assertEquals($wiki, $obj->wiki, 'Should set reference to Text_Wiki object');
+        $obj = new Text_Wiki2_Render_Xhtml_Address($wiki);
+        $this->assertEquals($wiki, $obj->wiki, 'Should set reference to Text_Wiki2 object');
         $this->assertEquals('Xhtml', $obj->format);
         $this->assertEquals('Address', $obj->rule);
         $this->assertEquals(array('css' => null), $obj->conf);

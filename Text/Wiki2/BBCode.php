@@ -1,7 +1,7 @@
 <?php
 // vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4:
 /**
- * BBCode: extension of base Text_Wiki text conversion handler
+ * BBCode: extension of base Text_Wiki2 text conversion handler
  *
  * PHP version 5
  *
@@ -20,7 +20,7 @@
 require_once 'Text/Wiki.php';
 
 /**
- * Base Text_Wiki handler class extension for BBCode
+ * Base Text_Wiki2 handler class extension for BBCode
  *
  * @category   Text
  * @package    Text_Wiki
@@ -29,9 +29,9 @@ require_once 'Text/Wiki.php';
  * @license    http://www.gnu.org/copyleft/lesser.html  LGPL License 2.1
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
- * @see        Text_Wiki::Text_Wiki()
+ * @see        Text_Wiki2::Text_Wiki2()
  */
-class Text_Wiki2_BBCode extends Text_Wiki {
+class Text_Wiki2_BBCode extends Text_Wiki2 {
 
     /**
      * The default list of rules, in order, to apply to the source text.
@@ -94,7 +94,7 @@ class Text_Wiki2_BBCode extends Text_Wiki {
      */
     function Text_Wiki2_BBCode($rules = null)
     {
-        parent::Text_Wiki($rules);
+        parent::Text_Wiki2($rules);
         $this->addPath('parse', $this->fixPath(dirname(__FILE__)).'Parse/BBCode');
     }
 }

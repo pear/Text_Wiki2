@@ -3,7 +3,7 @@
 /**
  *
  * Parse structured wiki text and render into arbitrary formats such as XHTML.
- * This is the Text_Wiki extension for Mediawiki markup
+ * This is the Text_Wiki2 extension for Mediawiki markup
  *
  * PHP version 5
  *
@@ -31,7 +31,7 @@ require_once 'Text/Wiki.php';
 
 /**
  *
- * Base Text_Wiki handler class extension for Creole markup
+ * Base Text_Wiki2 handler class extension for Creole markup
  *
  * @category   Text
  *
@@ -43,11 +43,11 @@ require_once 'Text/Wiki.php';
  *
  * @link       http://pear.php.net/package/Text_Wiki
  *
- * @see        Text_Wiki::Text_Wiki()
+ * @see        Text_Wiki2::Text_Wiki2()
  *
  */
 
-class Text_Wiki2_Creole extends Text_Wiki {
+class Text_Wiki2_Creole extends Text_Wiki2 {
 
     // *single newlines* are handled as in most wikis (ignored)
     // if Newline is removed from rules, they will be handled as in word-processors (meaning a paragraph break)
@@ -96,7 +96,7 @@ class Text_Wiki2_Creole extends Text_Wiki {
      */
 
     function Text_Wiki2_Creole($rules = null) {
-        parent::Text_Wiki($rules);
+        parent::Text_Wiki2($rules);
         $this->addPath('parse', $this->fixPath(dirname(__FILE__)).'Parse/Creole');
         $this->renderingType = 'char';
         $this->setRenderConf('xhtml', 'center', 'css', 'center');

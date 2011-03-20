@@ -46,28 +46,28 @@ require_once 'Text/Wiki/Parse/Tiki/Url.php';
 require_once 'Text/Wiki/Parse/Tiki/Wikilink.php';
 
 
-class Text_Wiki_Parse_Tiki_AllTests extends PHPUnit_Framework_TestSuite
+class Text_Wiki2_Parse_Tiki_AllTests extends PHPUnit_Framework_TestSuite
 {
     
     public static function suite()
     { 
-        $suite = new PHPUnit_Framework_TestSuite('Text_Wiki_Parse_Tiki_TestSuite');
-        $suite->addTestSuite('Text_Wiki_Parse_Tiki_Heading_Test');
+        $suite = new PHPUnit_Framework_TestSuite('Text_Wiki2_Parse_Tiki_TestSuite');
+        $suite->addTestSuite('Text_Wiki2_Parse_Tiki_Heading_Test');
         
         return $suite;
     }
 
 }
 
-class Text_Wiki_Parse_Tiki_SetUp_Tests extends PHPUnit_Framework_TestCase
+class Text_Wiki2_Parse_Tiki_SetUp_Tests extends PHPUnit_Framework_TestCase
 {
 
     protected function setUp()
     {
-        $obj = Text_Wiki::factory('Tiki');
+        $obj = Text_Wiki2::factory('Tiki');
         $testClassName = get_class($this);
-        $ruleName = preg_replace('/Text_Wiki_Parse_Tiki_(.+?)_Test/', '\\1', $testClassName);
-        $this->className = 'Text_Wiki_Parse_' . $ruleName;
+        $ruleName = preg_replace('/Text_Wiki2_Parse_Tiki_(.+?)_Test/', '\\1', $testClassName);
+        $this->className = 'Text_Wiki2_Parse_' . $ruleName;
         $this->t = new $this->className($obj);
 
         if (file_exists(dirname(__FILE__) . '/fixtures/tiki_syntax_to_test_' . strtolower($ruleName) . '.txt')) {
@@ -81,7 +81,7 @@ class Text_Wiki_Parse_Tiki_SetUp_Tests extends PHPUnit_Framework_TestCase
     
 }
 
-class Text_Wiki_Parse_Tiki_Heading_Test extends Text_Wiki_Parse_Tiki_SetUp_Tests
+class Text_Wiki2_Parse_Tiki_Heading_Test extends Text_Wiki2_Parse_Tiki_SetUp_Tests
 {
     
     public function testTikiParseHeadingProcess()

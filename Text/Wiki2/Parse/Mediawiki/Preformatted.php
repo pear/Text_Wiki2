@@ -18,7 +18,7 @@
 /**
  * Parses for text marked as "preformatted" (i.e., to be rendered as-is).
  * 
- * This class implements a Text_Wiki rule to find sections of the source
+ * This class implements a Text_Wiki2 rule to find sections of the source
  * text that are not to be processed by Text_Wiki.  These blocks of "preformatted"
  * text will be rendered as they were found wrapped in <pre> tags.
  *

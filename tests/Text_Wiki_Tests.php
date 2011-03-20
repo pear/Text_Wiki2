@@ -4,11 +4,11 @@ require_once 'PEAR.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Text/Wiki.php';
 
-class Text_Wiki_Tests extends PHPUnit_Framework_TestCase
+class Text_Wiki2_Tests extends PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->obj = Text_Wiki::factory();
+        $this->obj = Text_Wiki2::factory();
 
         $this->obj->renderConf = array();
         $this->obj->parseConf = array();
@@ -33,28 +33,28 @@ class Text_Wiki_Tests extends PHPUnit_Framework_TestCase
     
     public function testSingletonOfSameParserShouldReturnSameObject()
     {
-        $obj1 = Text_Wiki::singleton();
-        $obj2 = Text_Wiki::singleton();      
+        $obj1 = Text_Wiki2::singleton();
+        $obj2 = Text_Wiki2::singleton();      
         $this->assertEquals(spl_object_hash($obj1), spl_object_hash($obj2));
     }
     
     public function testSingletonOfDifferentParserShouldReturnDifferentObject()
     {
-        $obj1 = Text_Wiki::singleton('Tiki');
-        $obj2 = Text_Wiki::singleton();
+        $obj1 = Text_Wiki2::singleton('Tiki');
+        $obj2 = Text_Wiki2::singleton();
         $this->assertNotEquals(spl_object_hash($obj1), spl_object_hash($obj2));
     }
     
     public function testFactoryReturnDefaultParserInstance()
     {
-        $obj = Text_Wiki::factory();
-        $this->assertTrue(is_a($obj, 'Text_Wiki_Default'));
+        $obj = Text_Wiki2::factory();
+        $this->assertTrue(is_a($obj, 'Text_Wiki2_Default'));
     }
     
     public function testFactoryRestrictRulesUniverse()
     {
         $rules = array('Heading', 'Bold', 'Italic', 'Paragraph');
-        $obj = Text_Wiki::factory('Default', $rules);
+        $obj = Text_Wiki2::factory('Default', $rules);
         $this->assertEquals($rules, $obj->rules);
     }
 
@@ -64,11 +64,11 @@ class Text_Wiki_Tests extends PHPUnit_Framework_TestCase
         $sampleTextTransformed2Xhtml = file_get_contents(dirname(__FILE__) . '/fixtures/text_wiki_sample_syntax_transformed_to_xhtml.txt');
         $sampleTextTransformed2Plain = file_get_contents(dirname(__FILE__) . '/fixtures/text_wiki_sample_syntax_transformed_to_plain.txt');
         $sampleTextTransformed2Plain2 = file_get_contents(dirname(__FILE__) . '/fixtures/text_wiki_sample_syntax_transformed_to_plain2.txt');
-        $obj1 = Text_Wiki::factory('Mediawiki');
+        $obj1 = Text_Wiki2::factory('Mediawiki');
         $this->assertEquals($sampleTextTransformed2Xhtml, $obj1->transform($sampleText, 'Xhtml'));
-        $obj2 = Text_Wiki::factory('Mediawiki');
+        $obj2 = Text_Wiki2::factory('Mediawiki');
         $this->assertEquals($sampleTextTransformed2Plain, $obj2->transform($sampleText, 'Plain'));
-        $obj3 = Text_Wiki::factory('Tiki');
+        $obj3 = Text_Wiki2::factory('Tiki');
         $this->assertEquals($sampleTextTransformed2Plain2, $obj3->transform($sampleText, 'Plain'));
     }
 
@@ -78,11 +78,11 @@ class Text_Wiki_Tests extends PHPUnit_Framework_TestCase
         $sampleTextTransformed2Xhtml = file_get_contents(dirname(__FILE__) . '/fixtures/text_wiki_sample_syntax_transformed_to_xhtml.txt');
         $sampleTextTransformed2Plain = file_get_contents(dirname(__FILE__) . '/fixtures/text_wiki_sample_syntax_transformed_to_plain.txt');
         $sampleTextTransformed2Plain2 = file_get_contents(dirname(__FILE__) . '/fixtures/text_wiki_sample_syntax_transformed_to_plain2.txt');
-        $obj1 = Text_Wiki::singleton('Mediawiki');
+        $obj1 = Text_Wiki2::singleton('Mediawiki');
         $this->assertEquals($sampleTextTransformed2Xhtml, $obj1->transform($sampleText, 'Xhtml'));
-        $obj2 = Text_Wiki::singleton('Mediawiki');
+        $obj2 = Text_Wiki2::singleton('Mediawiki');
         $this->assertEquals($sampleTextTransformed2Plain, $obj2->transform($sampleText, 'Plain'));
-        $obj3 = Text_Wiki::singleton('Tiki');
+        $obj3 = Text_Wiki2::singleton('Tiki');
         $this->assertEquals($sampleTextTransformed2Plain2, $obj3->transform($sampleText, 'Plain'));
     }
 
@@ -251,7 +251,7 @@ class Text_Wiki_Tests extends PHPUnit_Framework_TestCase
 
     public function testTransform()
     {
-        $obj = Text_Wiki::factory('Mediawiki');
+        $obj = Text_Wiki2::factory('Mediawiki');
         $expectedResult = 'A very \'\'simple\'\' __source__ text. Not sure ((how)) to [http://example.com|improve] the transform() tests.' . "\n\n";
         $this->assertEquals($expectedResult, $obj->transform($this->sourceText, 'Tiki'));
     }
@@ -496,7 +496,7 @@ class Text_Wiki_Tests extends PHPUnit_Framework_TestCase
     {
         
         $this->assertTrue($this->obj->isError(PEAR::throwError('Some error message')));
-        $notPearErrorObject = new Text_Wiki;
+        $notPearErrorObject = new Text_Wiki2;
         $this->assertFalse($this->obj->isError($notPearErrorObject));
     }
     

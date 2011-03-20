@@ -3,7 +3,7 @@
 /**
  *
  * Parses for signatures.
- * This class implements a Text_Wiki rule to find sections of the source
+ * This class implements a Text_Wiki2 rule to find sections of the source
  * text that are signatures. A signature is any line starting with exactly
  * two - signs.
  *

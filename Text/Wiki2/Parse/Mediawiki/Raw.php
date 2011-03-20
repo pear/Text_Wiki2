@@ -17,7 +17,7 @@
 /**
  * Parses for text marked as "raw" (i.e., to be rendered as-is).
  * 
- * This class implements a Text_Wiki rule to find sections of the source
+ * This class implements a Text_Wiki2 rule to find sections of the source
  * text that are not to be processed by Text_Wiki.  These blocks of "raw"
  * text will be rendered as they were found.
  *

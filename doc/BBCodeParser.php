@@ -1,7 +1,7 @@
 <?php
 // vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4:
 /**
- * HTML_BBCodeParser: Transforms BBCode in XHTML (Text_Wiki version)
+ * HTML_BBCodeParser: Transforms BBCode in XHTML (Text_Wiki2 version)
  *
  * PHP versions 4 and 5
  *
@@ -33,7 +33,7 @@ if (!defined('HTML_BBCODEPARSER_V2')) {
  * Base HTML_BBCodeParser class to transform BBCode in XHTML
  *
  * This is a parser to replace UBB style tags with their xhtml equivalents.
- * It's the refundation of the class using the Text_Wiki transform engine
+ * It's the refundation of the class using the Text_Wiki2 transform engine
  *
  * Usage:
  *   $parser = new HTML_BBCodeParser();
@@ -61,9 +61,9 @@ if (!defined('HTML_BBCODEPARSER_V2')) {
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/HTML_BBCodeParser
- * @see        Text_Wiki::BBCode()
+ * @see        Text_Wiki2::BBCode()
  */
-class HTML_BBCodeParser extends Text_Wiki_BBCode
+class HTML_BBCodeParser extends Text_Wiki2_BBCode
 {
     /**
      * A string containing the input
@@ -118,8 +118,8 @@ class HTML_BBCodeParser extends Text_Wiki_BBCode
     */
     function HTML_BBCodeParser($options = array())
     {
-        // instantiate the Text_Wiki transformer
-        parent::Text_Wiki_BBCode();
+        // instantiate the Text_Wiki2 transformer
+        parent::Text_Wiki2_BBCode();
 
         // config file (.ini) ?
         if (is_string($options)) {
@@ -141,7 +141,7 @@ class HTML_BBCodeParser extends Text_Wiki_BBCode
            $this->_options[$k] = $v;
         }
 
-        // open and close tags are fixed by Text_Wiki_BBCode
+        // open and close tags are fixed by Text_Wiki2_BBCode
         if ((isset($this->_options['open'])  && ($this->_options['open']  != '['))
          || (isset($this->_options['close']) && ($this->_options['close'] != ']'))) {
             return
@@ -374,11 +374,11 @@ class HTML_BBCodeParser extends Text_Wiki_BBCode
     /**
     * Parses the text set in the object
     *
-    * @param    string $text : if set, that's a call to the parent Text_Wiki::parse()
+    * @param    string $text : if set, that's a call to the parent Text_Wiki2::parse()
     * @return   none
     * @access   public
-    * @see      Text_Wiki::parse()
-    * @see      Text_Wiki::render()
+    * @see      Text_Wiki2::parse()
+    * @see      Text_Wiki2::render()
     */
     function parse($text = null)
     {

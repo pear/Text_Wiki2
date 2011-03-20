@@ -3,7 +3,7 @@
 /**
  * Mediawiki: Parses for emphazised text.
  *
- * Text_Wiki rule parser to find source text emphazised
+ * Text_Wiki2 rule parser to find source text emphazised
  * as defined by text surrounded by repeated single quotes  ''...'' and more
  * Translated are ''emphasis'' , '''strong''' or '''''both''''' ...
  *

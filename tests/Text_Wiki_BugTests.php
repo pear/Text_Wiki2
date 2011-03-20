@@ -4,14 +4,14 @@ require_once 'PHPUnit/Framework/TestCase.php';
 require_once 'Text/Wiki.php';
 require_once 'Text/Wiki/Parse/Default/List.php';
 
-// class to test the Text_Wiki::transform() with different wiki markups
-class Text_Wiki_BugTests extends PHPUnit_Framework_TestCase
+// class to test the Text_Wiki2::transform() with different wiki markups
+class Text_Wiki2_BugTests extends PHPUnit_Framework_TestCase
 {
     protected $wiki;
 
     protected function setUp()
     {
-        $this->wiki = Text_Wiki::factory('Default');
+        $this->wiki = Text_Wiki2::factory('Default');
     }
 
     protected function tearDown()

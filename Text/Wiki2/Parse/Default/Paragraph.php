@@ -20,7 +20,7 @@
 * 
 * Parses for paragraph blocks.
 * 
-* This class implements a Text_Wiki rule to find sections of the source
+* This class implements a Text_Wiki2 rule to find sections of the source
 * text that are paragraphs.  A para is any line not starting with a token
 * delimiter, followed by two newlines.
 *

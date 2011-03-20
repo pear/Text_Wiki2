@@ -169,7 +169,7 @@ class Text_Wiki2
     * RTF needs to know font names and sizes, PDF requires page layout
     * information, and DocBook needs a section hierarchy.  This array
     * matches the $conf property of the the format-level renderer
-    * (e.g., Text_Wiki_Render_Xhtml).
+    * (e.g., Text_Wiki2_Render_Xhtml).
     *
     * In this array, the key is the rendering format name, and the value is
     * an array of key-value configuration pairs corresponding to the $conf
@@ -434,8 +434,8 @@ class Text_Wiki2
     {
         static $only = array();
         if (!isset($only[$parser])) {
-            $ret = Text_Wiki::factory($parser, $rules);
-            if (Text_Wiki::isError($ret)) {
+            $ret = Text_Wiki2::factory($parser, $rules);
+            if (Text_Wiki2::isError($ret)) {
                 return $ret;
             }
             $only[$parser] =& $ret;
@@ -449,9 +449,9 @@ class Text_Wiki2
      * @access public
      * @static
      * @param string $parser The name of the parse to instantiate
-     * you need to have Text_Wiki_XXX installed to use $parser = 'XXX', it's E_FATAL
+     * you need to have Text_Wiki2_XXX installed to use $parser = 'XXX', it's E_FATAL
      * @param array $rules The rules to pass into the constructor
-     *    {@see Text_Wiki::singleton} for a list of rules
+     *    {@see Text_Wiki2::singleton} for a list of rules
      * @return Text_Wiki2 a Parser object extended from Text_Wiki
      */
     public static function factory($parser = 'Default', $rules = null)
@@ -461,7 +461,7 @@ class Text_Wiki2
         if (!class_exists($class)) {
             require_once $file;
             if (!class_exists($class)) {
-                return Text_Wiki::error(
+                throw new Text_Wiki2_Exception(
                     'Class ' . $class . ' does not exist after requiring '. $file .
                         ', install package ' . $class . "\n");
             }
@@ -1043,7 +1043,7 @@ class Text_Wiki2
                                 array_push($tokenStack, $rule);
                             } elseif ($opts['type'] == 'end') {
                                 if ($tokenStack[count($tokenStack) - 1] != $rule) {
-                                    return Text_Wiki::error('Unbalanced tokens, check your syntax');
+                                    throw new Text_Wiki2_Exception('Unbalanced tokens, check your syntax');
                                 } else {
                                     array_pop($tokenStack);
                                 }
@@ -1124,7 +1124,7 @@ class Text_Wiki2
 
     function popRenderCallback() {
         if (count($this->_renderCallbacks) == 0) {
-            return Text_Wiki::error('Render callback popped when no render callbacks in stack');
+            throw new Text_Wiki2_Exception('Render callback popped when no render callbacks in stack');
         } else {
             $callback = array_pop($this->_renderCallbacks);
             $this->_block = call_user_func($callback, $this->_block);

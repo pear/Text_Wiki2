@@ -1,12 +1,12 @@
 --TEST--
-Text_Wiki_Default_Blockquote
+Text_Wiki2_Default_Blockquote
 --SKIPIF--
 <?php require_once dirname(__FILE__).'/skipif.php'; ?>
 --FILE--
 <?php
 include 'config.php';
 require_once 'Text/Wiki.php';
-$t = Text_Wiki::factory('Default', array('Blockquote'));
+$t = Text_Wiki2::factory('Default', array('Blockquote'));
 $t->parse('
 > test 1
 > test 2

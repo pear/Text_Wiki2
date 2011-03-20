@@ -67,7 +67,7 @@ class Text_Wiki2_Render {
 
     /**
     *
-    * A reference to the calling Text_Wiki object.
+    * A reference to the calling Text_Wiki2 object.
     *
     * This is needed so that each rule has access to the same source
     * text, token set, URLs, interwiki maps, page names, etc.
@@ -86,13 +86,13 @@ class Text_Wiki2_Render {
     *
     * @access public
     *
-    * @param object &$obj The calling "parent" Text_Wiki object.
+    * @param object &$obj The calling "parent" Text_Wiki2 object.
     *
     */
 
     function Text_Wiki2_Render(&$obj)
     {
-        // keep a reference to the calling Text_Wiki object
+        // keep a reference to the calling Text_Wiki2 object
         $this->wiki =& $obj;
 
         // get the config-key-name for this object,

@@ -66,7 +66,7 @@ class Text_Wiki2_Parse_Interwiki extends Text_Wiki2_Parse {
      * Generates a replacement for described interwiki links. Token
      * options are:
      * 
-     * 'site' => The key name for the Text_Wiki interwiki array map,
+     * 'site' => The key name for the Text_Wiki2 interwiki array map,
      * usually the name of the interwiki site.
      * 
      * 'page' => The page on the target interwiki to link to.

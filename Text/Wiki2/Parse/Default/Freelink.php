@@ -52,7 +52,7 @@ class Text_Wiki2_Parse_Freelink extends Text_Wiki2_Parse {
     * 
     * @access public
     * 
-    * @param object &$obj The calling "parent" Text_Wiki object.
+    * @param object &$obj The calling "parent" Text_Wiki2 object.
     * 
     */
     

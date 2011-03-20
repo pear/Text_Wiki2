@@ -2,7 +2,7 @@
 // vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4:
 /**
  * Parse structured wiki text and render into arbitrary formats such as XHTML.
- * This is the Text_Wiki extension for Cowiki markup
+ * This is the Text_Wiki2 extension for Cowiki markup
  *
  * PHP version 5
  *
@@ -22,7 +22,7 @@
 require_once('Text/Wiki.php');
 
 /**
- * Base Text_Wiki handler class extension for Cowiki markup
+ * Base Text_Wiki2 handler class extension for Cowiki markup
  *
  * @category   Text
  * @package    Text_Wiki
@@ -31,12 +31,12 @@ require_once('Text/Wiki.php');
  * @license    http://www.gnu.org/copyleft/lesser.html  LGPL License 2.1
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
- * @see        Text_Wiki::Text_Wiki()
+ * @see        Text_Wiki2::Text_Wiki2()
  */
-class Text_Wiki2_Cowiki extends Text_Wiki {
+class Text_Wiki2_Cowiki extends Text_Wiki2 {
 
     function Text_Wiki2_Cowiki() {
-        parent::Text_Wiki();
+        parent::Text_Wiki2();
         $paths = $this->getPath('parse');
         $this->addPath('parse', str_replace('Default', 'Cowiki', $paths[0]));
     }

@@ -30,9 +30,9 @@ class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
      *
      * Constructor.  Overrides the Text_Wiki2_Parse constructor so that we
      * can set the $regex property dynamically (we need to include the
-     * Text_Wiki $delim character).
+     * Text_Wiki2 $delim character).
      *
-     * @param object &$obj The calling "parent" Text_Wiki object.
+     * @param object &$obj The calling "parent" Text_Wiki2 object.
      *
      * @param string $name The token name to use for this rule.
      *

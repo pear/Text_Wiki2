@@ -24,7 +24,7 @@
  * @license    http://www.gnu.org/copyleft/lesser.html  LGPL License 2.1
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
- * @see        Text_Wiki::Text_Wiki2_Render()
+ * @see        Text_Wiki2::Text_Wiki2_Render()
  */
 class Text_Wiki2_Render_Plain_Font extends Text_Wiki2_Render {
     

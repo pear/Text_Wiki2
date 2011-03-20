@@ -3,7 +3,7 @@
 /**
  * Mediawiki: Parses for links to (inter)wiki pages or images.
  *
- * Text_Wiki rule parser to find links, it groups the 3 rules:
+ * Text_Wiki2 rule parser to find links, it groups the 3 rules:
  * # Wikilink: links to internal Wiki pages
  * # Interwiki: links to external Wiki pages (sister projects, interlangage)
  * # Image: Images
