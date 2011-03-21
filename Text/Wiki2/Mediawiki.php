@@ -18,7 +18,7 @@
 /**
  * "master" class for handling the management and convenience
  */
-require_once('Text/Wiki2.php');
+require_once 'Text/Wiki2.php';
 
 /**
  * Base Text_Wiki2 handler class extension for Mediawiki markup
@@ -31,7 +31,8 @@ require_once('Text/Wiki2.php');
  * @link       http://pear.php.net/package/Text_Wiki
  * @see        Text_Wiki2::Text_Wiki2()
  */
-class Text_Wiki2_Mediawiki extends Text_Wiki2 {
+class Text_Wiki2_Mediawiki extends Text_Wiki2
+{
     var $rules = array(
         'Prefilter',
         'Delimiter',
@@ -86,10 +87,9 @@ class Text_Wiki2_Mediawiki extends Text_Wiki2 {
      * @access public
      * @param array $rules The set of rules to load for this object.
      */
-    function Text_Wiki2_Mediawiki($rules = null) {
-        parent::Text_Wiki2($rules);
-        $this->addPath('parse', $this->fixPath(dirname(__FILE__)).'Parse/Mediawiki');
+    function __construct($rules = null)
+    {
+        parent::__construct($rules);
+        $this->addPath('parse', $this->fixPath(__DIR__) . 'Parse/Mediawiki');
     }
 }
-
-?>
