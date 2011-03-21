@@ -448,20 +448,13 @@ class Text_Wiki2_Tests extends PHPUnit_Framework_TestCase
         $path = array('parse' => array('Text/Wiki2/Parse/Default/'), 'render' => array());
         $this->obj->addPath('parse', 'Text/Wiki2/Parse/Default/');
         $this->assertEquals($path, $this->obj->path);
-        
+
         // dir without trailing trailing slash
         $path = array('parse' => array('Text/Wiki2/Parse/Other/', 'Text/Wiki2/Parse/Default/'), 'render' => array());
         $this->obj->addPath('parse', 'Text/Wiki2/Parse/Other');
         $this->assertEquals($path, $this->obj->path);
     }
-    
-    public function testAddPathCreateTypeAndThenAddDir()
-    {
-        $path = array('parse' => array('Text/Wiki2/Parse/Default/'));
-        $this->obj->addPath('parse', 'Text/Wiki2/Parse/Default/');
-        $this->assertEquals($path, $this->obj->getPath());
-    }
-    
+
     public function testGetPathShouldReturnPathArray()
     {
         $path = array('parse' => array('Text/Wiki2/Parse/Default/', 'Text/Wiki2/Parse/Other/'), 'render' => array('Text/Wiki2/Parse/Xhtml/'));
