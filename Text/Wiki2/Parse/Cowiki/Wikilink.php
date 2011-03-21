@@ -42,11 +42,11 @@
 * 
 */
 
-class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse {
-    
+class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse
+{
     var $conf = array (
-                       'ext_chars' => false,
-                       'utf-8' => false
+        'ext_chars' => false,
+        'utf-8'     => false
     );
     
     /**
@@ -62,9 +62,9 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse {
     * 
     */
     
-    function Text_Wiki2_Parse_Wikilink(&$obj)
+    function __construct(Text_Wiki2 $obj)
     {
-        parent::Text_Wiki2_Parse($obj);
+        parent::__construct($obj);
         if ($this->getConf('utf-8')) {
 			$upper = 'A-Z\p{Lu}';
 			$lower = 'a-z0-9\p{Ll}';
@@ -166,17 +166,15 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse {
         if ($options['text'] == $options['page']) {
             $options['text'] = '';
         }
-        
+
         // create and return the replacement token and preceding text
         return $this->wiki->addToken($this->rule,
                                      array_merge(array('type' => 'start'), $options)).
             $options['text'].
             $this->wiki->addToken($this->rule,
                                   array_merge(array('type' => 'end'), $options));
-                                        
     }
-    
-    
+
     /**
     * 
     * Generate a replacement for standalone links.
@@ -224,4 +222,3 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse {
             $matches[7];
     }
 }
-?>

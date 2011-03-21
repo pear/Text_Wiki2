@@ -106,7 +106,7 @@ class Text_Wiki2_Parse
     * @param object &$obj The calling "parent" Text_Wiki2 object.
     *
     */
-    function __construct($obj)
+    function __construct(Text_Wiki2 $obj)
     {
         // set the reference to the calling Text_Wiki2 object;
         // this allows us access to the shared source text, token

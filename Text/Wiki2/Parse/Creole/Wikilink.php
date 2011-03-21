@@ -102,10 +102,10 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse {
      * @access public
      */
 
-    function Text_Wiki2_Parse_Wikilink(&$obj)
+    function __construct(Text_Wiki2 $obj)
     {
         $default = $this->conf;
-        parent::Text_Wiki2_Parse($obj);
+        parent::__construct($obj);
 
         // override config options for image if specified
         if (in_array('Image', $this->wiki->disable)) {

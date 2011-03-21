@@ -49,9 +49,8 @@
 * 
 */
 
-class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
-    
-    
+class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse
+{
     /**
     * 
     * Keeps a running count of numbered-reference URLs.
@@ -96,11 +95,10 @@ class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
     * @access public
     * 
     */
-    
-    function Text_Wiki2_Parse_Url(&$obj)
+    function __construct(Text_Wiki2 $obj)
     {
-        parent::Text_Wiki2_Parse($obj);
-        
+        parent::__construct($obj);
+
         // convert the list of recognized schemes to a regex-safe string,
         // where the pattern delim is a slash
         $tmp = array();
@@ -109,7 +107,7 @@ class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
             $tmp[] = preg_quote($val, '/');
         }
         $schemes = implode('|', $tmp);
-        
+
         // build the regex
         $this->regex =
             "($schemes)" . // allowed schemes
@@ -278,4 +276,3 @@ class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
         return $this->wiki->addToken($this->rule, $options);
     }
 }
-?>

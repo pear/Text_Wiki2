@@ -85,9 +85,9 @@ class Text_Wiki2_Render_Docbook_Heading extends Text_Wiki2_Render {
      * @return The render object
      * @access public
      */
-    function Text_Wiki2_Render_Docbook_Heading(&$obj)
+    function __construct(&$obj)
     {
-        parent::Text_Wiki2_Render($obj);
+        parent::__construct($obj);
         $max = 0;
         foreach ($this->wiki->getTokens('Heading') as $key => $val) {
             if ($val[1]['type'] == 'start') {

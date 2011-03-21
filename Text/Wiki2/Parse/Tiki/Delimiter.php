@@ -49,9 +49,9 @@ class Text_Wiki2_Parse_Delimiter extends Text_Wiki2_Parse {
     * 
     */
     
-    function Text_Wiki2_Parse_delimiter(&$obj)
+    function __construct(&$obj)
     {
-        parent::Text_Wiki2_Parse($obj);
+        parent::__construct($obj);
         $this->regex = '/' . $this->wiki->delim . '/';
     }
     

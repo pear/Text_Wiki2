@@ -33,8 +33,8 @@
 * 
 */
 
-class Text_Wiki2_Parse_Delimiter extends Text_Wiki2_Parse {
-    
+class Text_Wiki2_Parse_Delimiter extends Text_Wiki2_Parse
+{
     /**
     * 
     * Constructor.  Overrides the Text_Wiki2_Parse constructor so that we
@@ -46,10 +46,9 @@ class Text_Wiki2_Parse_Delimiter extends Text_Wiki2_Parse {
     * @param string $name The token name to use for this rule.
     * 
     */
-    
-    function Text_Wiki2_Parse_delimiter(&$obj)
+    function __construct(Text_Wiki2 $obj)
     {
-        parent::Text_Wiki2_Parse($obj);
+        parent::__construct($obj);
         $this->regex = '/' . $this->wiki->delim . '/';
     }
     

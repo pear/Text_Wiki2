@@ -33,21 +33,20 @@
 * 
 */
 
-class Text_Wiki2_Parse_Emphasis extends Text_Wiki2_Parse {
-    
-    
+class Text_Wiki2_Parse_Emphasis extends Text_Wiki2_Parse
+{
     /**
      * Setting regex in constructor instead of with var as we need $this->wiki->delim
      */
-    function Text_Wiki2_Parse_Emphasis(&$obj) {
-        parent::Text_Wiki2_Parse($obj);
+    function __construct(Text_Wiki2 $obj)
+    {
+        parent::__construct($obj);
 
         //using [^delim] here as CoWiki's Italic syntax is a single / and its other markup is HTML syntax with / in it
         //  This rule *must* be applied after all HTML style rules
         $this->regex = '!/(()|[^/][^'.$this->wiki->delim.']*)/!U';
     }
-    
-    
+
     /**
     * 
     * Generates a replacement for the matched text.  Token options are:
@@ -64,18 +63,14 @@ class Text_Wiki2_Parse_Emphasis extends Text_Wiki2_Parse {
     * emphasized.
     *
     */
-    
     function process(&$matches)
     {
         $start = $this->wiki->addToken(
             $this->rule, array('type' => 'start')
         );
-        
         $end = $this->wiki->addToken(
             $this->rule, array('type' => 'end')
         );
-        
         return $start . $matches[1] . $end;
     }
 }
-?>

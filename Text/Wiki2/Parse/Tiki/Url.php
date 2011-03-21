@@ -99,9 +99,9 @@ class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
     * 
     */
     
-    function Text_Wiki2_Parse_Url(&$obj)
+    function __construct(&$obj)
     {
-        parent::Text_Wiki2_Parse($obj);
+        parent::__construct($obj);
         
         // convert the list of recognized schemes to a regex-safe string,
         // where the pattern delim is a slash

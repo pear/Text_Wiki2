@@ -33,10 +33,11 @@ require_once('Text/Wiki2.php');
  * @link       http://pear.php.net/package/Text_Wiki
  * @see        Text_Wiki2::Text_Wiki2()
  */
-class Text_Wiki2_Doku extends Text_Wiki2 {
-
-    function Text_Wiki2_Doku($rules = null) {
-        parent::Text_Wiki2($rules);
+class Text_Wiki2_Doku extends Text_Wiki2
+{
+    function __construct(array $rules = null)
+    {
+        parent::__construct($rules);
         $paths = $this->getPath('parse');
         $this->addPath('parse', str_replace('Default', 'Doku', $paths[0]));
     }
