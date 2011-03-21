@@ -9,7 +9,7 @@ require_once 'Text_Wiki2_Render_Tiki_Tests.php';
 //require_once 'Text_Wiki2_Parse_Tiki_Tests.php';
 require_once 'Text/Wiki2/Parse/Mediawiki/Tests.php';
 require_once 'Text_Wiki2_Generic_Transform_Tests.php';
-require_once 'Text_Wiki2_BugTests.php';
+require_once 'Text/Wiki2/BugTests.php';
 
 class Text_Wiki2_AllTests
 {
