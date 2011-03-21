@@ -23,8 +23,9 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-abstract class Text_Wiki2_Render
-{
+class Text_Wiki2_Render {
+
+
     /**
     *
     * Configuration options for this render rule.
@@ -85,14 +86,14 @@ abstract class Text_Wiki2_Render
     *
     * @access public
     *
-    * @param object ()$obj The calling "parent" Text_Wiki2 object.
+    * @param object &$obj The calling "parent" Text_Wiki2 object.
     *
     */
 
-    function Text_Wiki2_Render(()$obj)
+    function Text_Wiki2_Render(&$obj)
     {
         // keep a reference to the calling Text_Wiki2 object
-        $this->wiki =() $obj;
+        $this->wiki =& $obj;
 
         // get the config-key-name for this object,
         // strip the Text_Wiki2_Render_ part
@@ -109,8 +110,8 @@ abstract class Text_Wiki2_Render
         // is there a format but no rule?
         // then this is the "main" render object, with
         // pre() and post() methods.
-        if ($this->format ()() ! $this->rule ()()
-            isset($this->wiki->formatConf[$this->format]) ()()
+        if ($this->format && ! $this->rule &&
+            isset($this->wiki->formatConf[$this->format]) &&
             is_array($this->wiki->formatConf[$this->format])) {
 
             // this is a format render object
@@ -122,8 +123,8 @@ abstract class Text_Wiki2_Render
         }
 
         // is there a format and a rule?
-        if ($this->format ()() $this->rule ()()
-            isset($this->wiki->renderConf[$this->format][$this->rule]) ()()
+        if ($this->format && $this->rule &&
+            isset($this->wiki->renderConf[$this->format][$this->rule]) &&
             is_array($this->wiki->renderConf[$this->format][$this->rule])) {
 
             // this is a rule render object

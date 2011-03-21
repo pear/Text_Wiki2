@@ -78,7 +78,7 @@ class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse
      * Constructor.
      * We override the constructor to build up the regex from config
      *
-     * @param object ()$obj the base conversion handler
+     * @param object &$obj the base conversion handler
      * @return The parser object
      * @access public
      */
@@ -127,13 +127,13 @@ class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse
      *     'href' => the URL link href portion
      *     'text' => the displayed text of the URL link
      *
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      * @return string Delimited token representing the url
      * @access public
      */
-    function process(()$matches)
+    function process(&$matches)
     {
-        if ($this->refused ()() isset($matches[3]) ()() in_array($matches[3], $this->refused)) {
+        if ($this->refused && isset($matches[3]) && in_array($matches[3], $this->refused)) {
             return $matches[0];
         }
         $pre = '';

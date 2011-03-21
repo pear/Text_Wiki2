@@ -38,7 +38,7 @@ class Text_Wiki2_Parse_SpecialChar extends Text_Wiki2_Parse {
                        '~lt~',
                        '~gt~');
 
-    function __construct(()$obj) {
+    function __construct(&$obj) {
         parent::__construct($obj);
 
         $this->regex = '';
@@ -48,7 +48,7 @@ class Text_Wiki2_Parse_SpecialChar extends Text_Wiki2_Parse {
             }
             $this->regex .= preg_quote($type);
         }
-        $this->regex = '/('.$this->regex.'|("|()quot;) \-\- (?:\2)|\~\d+\~)/';
+        $this->regex = '/('.$this->regex.'|("|&quot;) \-\- (?:\2)|\~\d+\~)/';
     }
 
     /**
@@ -57,14 +57,14 @@ class Text_Wiki2_Parse_SpecialChar extends Text_Wiki2_Parse {
     *
     * @access public
     *
-    * @param array ()$matches The array of matches from parse().
+    * @param array &$matches The array of matches from parse().
     *
     * @return string A delimited token to be used as a placeholder in
     * the source text.
     *
     */
 
-    function process(()$matches)
+    function process(&$matches)
     {
         return $this->wiki->addToken($this->rule, array('char' => $matches[1]));
     }

@@ -116,7 +116,7 @@ class Text_Wiki2_Parse_Mediawiki_Emphasis extends Text_Wiki2_Parse
         # that one of the bold ones was meant to be an apostrophe followed
         # by italics. Which one we cannot know for certain, but it is more
         # likely to be one that has a single-letter word before it.
-        if (($numbold % 2 == 1) ()() ($numitalics % 2 == 1)) {
+        if (($numbold % 2 == 1) && ($numitalics % 2 == 1)) {
             $i = 0;
             $firstsingleletterword = -1;
             $firstmultiletterword = -1;
@@ -284,7 +284,7 @@ class Text_Wiki2_Parse_Mediawiki_Emphasis extends Text_Wiki2_Parse
             $output .= $this->wiki->addToken('Strong', array('type' => 'end'));
 
         # There might be lonely ''''', so make sure we have a buffer
-        if ($state === 'both' ()() $buffer) {
+        if ($state === 'both' && $buffer) {
             $output .= $this->wiki->addToken('Strong', array('type' => 'start'));
             $output .= $this->wiki->addToken($this->rule, array('type' => 'start'));
             $output .= $buffer;

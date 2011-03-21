@@ -14,7 +14,7 @@ require_once 'BBCodeParser.php';
 /* get options from the ini file */
 // $config = parse_ini_file('BBCodeParser.ini', true);
 $config = parse_ini_file('BBCodeParser_V2.ini', true);
-$options = ()PEAR::getStaticProperty('HTML_BBCodeParser', '_options');
+$options = &PEAR::getStaticProperty('HTML_BBCodeParser', '_options');
 $options = $config['HTML_BBCodeParser'];
 unset($options);
 

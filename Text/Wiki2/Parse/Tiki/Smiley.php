@@ -49,11 +49,11 @@ class Text_Wiki2_Parse_Smiley extends Text_Wiki2_Parse {
      *     'name' => the name of the smiley
      *     'desc' => the description of the smiley
      *
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      * @return string Delimited token representing the smiley
      * @access public
      */
-    function process(()$matches)
+    function process(&$matches)
     {
         // tokenize
         return $this->wiki->addToken($this->rule,

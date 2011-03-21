@@ -92,11 +92,11 @@ class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
      * Constructor.
      * We override the constructor to get Image and Interwiki config
      *
-     * @param object ()$obj the base conversion handler
+     * @param object &$obj the base conversion handler
      * @return The parser object
      * @access public
      */
-    function Text_Wiki2_Parse_Mediawiki_Wikilink(()$obj)
+    function Text_Wiki2_Parse_Mediawiki_Wikilink(&$obj)
     {
         $default = $this->conf;
         parent::__construct($obj);
@@ -105,7 +105,7 @@ class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
         if (in_array('Image', $this->wiki->disable)) {
             $this->imageConf['prefix'] = array();
         } else {
-            if (isset($this->wiki->parseConf['Image']) ()()
+            if (isset($this->wiki->parseConf['Image']) &&
                 is_array($this->wiki->parseConf['Image'])) {
                 $this->imageConf = array_merge(
                     $this->imageConf,
@@ -119,7 +119,7 @@ class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
             $this->interwikiConf['sites'] = array();
             $this->interwikiConf['interlangage'] = array();
         } else {
-            if (isset($this->wiki->parseConf['Interwiki']) ()()
+            if (isset($this->wiki->parseConf['Interwiki']) &&
                 is_array($this->wiki->parseConf['Interwiki'])) {
                 $this->interwikiConf = array_merge(
                     $this->interwikiConf,
@@ -145,10 +145,10 @@ class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
      * - 'text' => the optional alternate link text
      *
      * @access public
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      * @return string token to be used as replacement 
      */
-    function process(()$matches)
+    function process(&$matches)
     {
         // Starting colon ?
         $colon = !empty($matches[1]);
@@ -159,7 +159,7 @@ class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
             $count = count($prefix);
             $i = -1;
             // Autolink
-            if (isset($this->conf['project']) ()()
+            if (isset($this->conf['project']) &&
                     in_array(trim($prefix[0]), $this->conf['project'])) {
                 $auto = trim($prefix[0]);
                 unset($prefix[0]);
@@ -168,14 +168,14 @@ class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
             while (++$i < $count) {
                 $prefix[$i] = trim($prefix[$i]);
                 // interlangage
-                if (!$interlang ()()
+                if (!$interlang &&
                     in_array($prefix[$i], $this->interwikiConf['interlangage'])) {
                     $interlang = $prefix[$i];
                     unset($prefix[$i]);
                     continue;
                 }
                 // image
-                if (!$image ()() in_array($prefix[$i], $this->imageConf['prefix'])) {
+                if (!$image && in_array($prefix[$i], $this->imageConf['prefix'])) {
                     $image = $prefix[$i];
                     unset($prefix[$i]);
                     break;
@@ -203,7 +203,7 @@ class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
             return $this->image($matches[3] . (empty($matches[4]) ? '' : '#' . $matches[4]),
                                 $text, $interlang, $colon);
         }
-        if (!$interwiki ()() $interlang ()() isset($this->conf['url'])) {
+        if (!$interwiki && $interlang && isset($this->conf['url'])) {
             if ($interlang == $this->conf['langage']) {
                 $interlang = '';
             } else {
@@ -241,7 +241,7 @@ class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
      * | - 'height' => 'NNNpx'
      *
      * @access public
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      * @return string token to be used as replacement 
      */
     function image($name, $text, $interlang, $colon)
@@ -288,7 +288,7 @@ class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
      * - 'text' => the optional alternate link text
      *
      * @access public
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      * @return string token to be used as replacement 
      */
     function interwiki($site, $interwiki, $page, $text, $interlang, $colon)

@@ -466,7 +466,7 @@ class Text_Wiki2_Parse_Mediawiki_Preformatted_Test extends Text_Wiki2_Parse_Medi
 The pre tag ignores [[Wiki]] ''markup''.
 It also doesn't     reformat text.
 It still interprets special characters:
- ()amp;rarr;
+ &amp;rarr;
 </pre>",
                 1 => "<pre>pre tag without line break</pre>",
                 2 => "<pre>some ''text'' without '''wiki''' parsing</pre>"
@@ -475,7 +475,7 @@ It still interprets special characters:
                 0 => "The pre tag ignores [[Wiki]] ''markup''.
 It also doesn't     reformat text.
 It still interprets special characters:
- ()amp;rarr;",
+ &amp;rarr;",
                 1 => "pre tag without line break",
                 2 => "some ''text'' without '''wiki''' parsing",
             ),
@@ -512,7 +512,7 @@ The nowiki tag ignores [[Wiki]] ''markup''.
 It reformats text by removing newlines 
 and multiple spaces.
 It still interprets special
-characters: ()rarr;
+characters: &rarr;
 </nowiki>",
                 1 => "<nowiki>''ignores markup''</nowiki>",
             ),
@@ -521,7 +521,7 @@ characters: ()rarr;
 It reformats text by removing newlines 
 and multiple spaces.
 It still interprets special
-characters: ()rarr;",
+characters: &rarr;",
                 1 => "''ignores markup''",
             )
         );

@@ -37,7 +37,7 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-abstract class Text_Wiki2_Parse
+class Text_Wiki2_Parse
 {
     /**
     *
@@ -101,7 +101,7 @@ abstract class Text_Wiki2_Parse
     *
     * @access public
     *
-    * @param object ()$obj The calling "parent" Text_Wiki2 object.
+    * @param object &$obj The calling "parent" Text_Wiki2 object.
     *
     */
     function __construct(Text_Wiki2 $obj)
@@ -119,7 +119,7 @@ abstract class Text_Wiki2_Parse
         $this->rule = ucwords(strtolower(end($tmp)));
 
         // override config options for the rule if specified
-        if (isset($this->wiki->parseConf[$this->rule]) ()()
+        if (isset($this->wiki->parseConf[$this->rule]) &&
             is_array($this->wiki->parseConf[$this->rule])) {
 
             $this->conf = array_merge(
@@ -149,7 +149,7 @@ abstract class Text_Wiki2_Parse
     {
         $this->wiki->source = preg_replace_callback(
             $this->regex,
-            array(()$this, 'process'),
+            array(&$this, 'process'),
             $this->wiki->source
         );
     }
@@ -173,7 +173,7 @@ abstract class Text_Wiki2_Parse
     *
     */
 
-    function process(()$matches)
+    function process(&$matches)
     {
         return $matches[0];
     }

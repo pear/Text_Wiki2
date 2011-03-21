@@ -83,7 +83,7 @@ class Text_Wiki2_Render_Docbook_Image extends Text_Wiki2_Render {
 
         // stephane@metacites.net -- 25/07/2004
         // we make up an align="center" value for the <img> tag.
-        if (isset($options['attr']['align']) ()()
+        if (isset($options['attr']['align']) &&
             $options['attr']['align'] == 'center') {
 
             // unset so it won't show up as an attribute
@@ -105,7 +105,7 @@ class Text_Wiki2_Render_Docbook_Image extends Text_Wiki2_Render {
 
         // stephane@metacites.net -- 25/07/2004
         // try to guess width and height
-        if (! isset($options['attr']['width']) ()()
+        if (! isset($options['attr']['width']) &&
             ! isset($options['attr']['height'])) {
 
             // does the source refer to a local file or a URL?

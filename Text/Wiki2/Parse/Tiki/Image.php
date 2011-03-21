@@ -45,18 +45,18 @@ class Text_Wiki2_Parse_Image extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array ()$matches The array of matches from parse().
+    * @param array &$matches The array of matches from parse().
     *
     * @return A delimited token number to be used as a placeholder in
     * the source text.
     *
     */
     
-    function process(()$matches)
+    function process(&$matches)
     {
         $options = array('src' => '', 'attr' => array('border' => '0'));
         $src = $link = $align = $desc = '';
-        preg_match_all('/(\w+)\s*=\s*((()quot;|\'|"|()apos;|()#34;|()#39;)(.*?)\3|\S*)/',
+        preg_match_all('/(\w+)\s*=\s*((&quot;|\'|"|&apos;|&#34;|&#39;)(.*?)\3|\S*)/',
                        str_replace(array('}', '{'), '', $matches[1]), $splits, PREG_SET_ORDER);
 
         foreach ($splits as $attr) {

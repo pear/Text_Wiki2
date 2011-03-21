@@ -49,11 +49,11 @@ class Text_Wiki2_Parse_Mediawiki_Code extends Text_Wiki2_Parse {
     * 'text' => The full matched text, not including the <code></code> tags.
     * 
     * @access public
-    * @param array ()$matches The array of matches from parse().
+    * @param array &$matches The array of matches from parse().
     * @return A delimited token number to be used as a placeholder in
     * the source text.
     */
-    function process(()$matches)
+    function process(&$matches)
     {
         // are there additional attribute arguments?
         $args = trim($matches[1]);

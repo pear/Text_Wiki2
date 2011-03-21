@@ -60,7 +60,7 @@ class Text_Wiki2_Render_Docbook_Wikilink extends Text_Wiki2_Render {
         // getConf() because we'll need a reference (for
         // object instance method callbacks).
         if (isset($this->conf['exists_callback'])) {
-            $callback =() $this->conf['exists_callback'];
+            $callback =& $this->conf['exists_callback'];
         } else {
         	$callback = false;
         }

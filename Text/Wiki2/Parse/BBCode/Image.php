@@ -56,7 +56,7 @@ class Text_Wiki2_Parse_Image extends Text_Wiki2_Parse {
      * Constructor.
      * We override the constructor to build up the regex from config
      *
-     * @param object ()$obj the base conversion handler
+     * @param object &$obj the base conversion handler
      * @return The parser object
      * @access public
      */
@@ -90,11 +90,11 @@ class Text_Wiki2_Parse_Image extends Text_Wiki2_Parse {
      *     'src' => the URL / path to the image
      *     'attr' => empty for basic BBCode
      *
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      * @return string Delimited token representing the image
      * @access public
      */
-    function process(()$matches)
+    function process(&$matches)
     {
         // tokenize
         return $this->wiki->addToken($this->rule, array('src' => $matches[1], 'attr' => array()));

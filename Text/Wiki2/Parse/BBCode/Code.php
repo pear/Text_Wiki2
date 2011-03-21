@@ -49,12 +49,12 @@ class Text_Wiki2_Parse_Code extends Text_Wiki2_Parse {
      * - 'text' => the contained text
      * - 'attr' => type empty
      *
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      * @return A delimited token to be used as a placeholder in
      * the source text and containing the original block of text
      * @access public
      */
-    function process(()$matches)
+    function process(&$matches)
     {
         return $this->wiki->addToken($this->rule, array(
                     'text' => $matches[1],

@@ -65,11 +65,11 @@ class Text_Wiki2_Parse_Mediawiki_List extends Text_Wiki2_Parse {
     * xhtml, but very useful for PDF and RTF.
     * 
     * @access public
-    * @param array ()$matches The array of matches from parse().
+    * @param array &$matches The array of matches from parse().
     * @return A series of text and delimited tokens marking the different
     * list text and list elements.
     */
-    function process(()$matches)
+    function process(&$matches)
     {
         // the replacement text we will return
         $return = '';

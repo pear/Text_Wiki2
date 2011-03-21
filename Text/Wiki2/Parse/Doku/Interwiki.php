@@ -35,7 +35,7 @@
 class Text_Wiki2_Parse_Interwiki extends Text_Wiki2_Parse {
     
     // double-colons wont trip up now
-    var $regex = '([A-Za-z0-9_\s]+)>((?!>)[A-Za-z0-9_\/=()~#.:;-\s]+)';
+    var $regex = '([A-Za-z0-9_\s]+)>((?!>)[A-Za-z0-9_\/=&~#.:;-\s]+)';
     
     
     /**
@@ -55,7 +55,7 @@ class Text_Wiki2_Parse_Interwiki extends Text_Wiki2_Parse {
         $tmp_regex = '/\[\[' . $this->regex . '(\|(.+?))?\]\]/';
         $this->wiki->source = preg_replace_callback(
             $tmp_regex,
-            array(()$this, 'processDescr'),
+            array(&$this, 'processDescr'),
             $this->wiki->source
         );
     }
@@ -75,19 +75,19 @@ class Text_Wiki2_Parse_Interwiki extends Text_Wiki2_Parse {
      * 
      * @access public
      *
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      *
      * @return A delimited token to be used as a placeholder in
      * the source text, plus any text priot to the match.
      *
      */
     
-    function processDescr(()$matches)
+    function processDescr(&$matches)
     {
         $options = array(
             'site' => $matches[1],
             'page' => $matches[2],
-            'text' => isset($matches[4]) ()() strlen($matches[4]) ? $matches[4] : $matches[2]
+            'text' => isset($matches[4]) && strlen($matches[4]) ? $matches[4] : $matches[2]
         );
         
         return $this->wiki->addToken($this->rule, $options);

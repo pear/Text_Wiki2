@@ -81,11 +81,11 @@ class Text_Wiki2_Render_Docbook_Heading extends Text_Wiki2_Render {
      * - mark the terminal ones
      * - prepare the actual sections to be used
      *
-     * @param object ()$obj the base conversion handler
+     * @param object &$obj the base conversion handler
      * @return The render object
      * @access public
      */
-    function __construct(()$obj)
+    function __construct(&$obj)
     {
         parent::__construct($obj);
         $max = 0;
@@ -170,7 +170,7 @@ class Text_Wiki2_Render_Docbook_Heading extends Text_Wiki2_Render {
         }
         $output = '';
         // sections to finish ?
-        while ($this->_level >= 0 ()() $level <= $this->_level) {
+        while ($this->_level >= 0 && $level <= $this->_level) {
             $output .= $this->_stack[$this->_level] ? 
                     '</' . $this->_stack[$this->_level] . ">\n" : '';
             --$this->_level;

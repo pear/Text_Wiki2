@@ -81,7 +81,7 @@ class Text_Wiki2_Render_Xhtml_Code extends Text_Wiki2_Render {
             // courtesy of research by A. Kalin :-).
             $map = array(
                 '<br />'  => "\n",
-                '()nbsp;'  => ' ',
+                '&nbsp;'  => ' ',
                 '<font'   => '<span',
                 '</font>' => '</span>',
                 'color="' => 'style="color:'
@@ -122,7 +122,7 @@ class Text_Wiki2_Render_Xhtml_Code extends Text_Wiki2_Render {
             $text = "<pre$css><code$css_code>$text</code></pre>";
         }
 
-        if ($css_filename ()() isset($attr['filename'])) {
+        if ($css_filename && isset($attr['filename'])) {
             $text = "<div$css_filename>" .
                 $attr['filename'] . '</div>' . $text;
         }

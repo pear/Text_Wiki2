@@ -45,11 +45,11 @@ class Text_Wiki2_Parse_Mediawiki_Subscript extends Text_Wiki2_Parse {
     * emphasized text.  The text itself is left in the source.
     * 
     * @access public
-    * @param array ()$matches The array of matches from parse().
+    * @param array &$matches The array of matches from parse().
     * @return A pair of delimited tokens to be used as a placeholder in
     * the source text surrounding the text to be emphasized.
     */
-    function process(()$matches)
+    function process(&$matches)
     {
         $start = $this->wiki->addToken(
             $this->rule, array('type' => 'start')

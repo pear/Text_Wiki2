@@ -114,7 +114,7 @@ class Text_Wiki2_Render_Docbook_Table extends Text_Wiki2_Render {
             }
 
             // add alignment
-            if ($attr != 'header' ()() $attr != '') {
+            if ($attr != 'header' && $attr != '') {
                 $html .= " style=\"text-align: $attr;\"";
             }
 

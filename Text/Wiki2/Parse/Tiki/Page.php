@@ -42,7 +42,7 @@ class Text_Wiki2_Parse_Page extends Text_Wiki2_Parse {
 
 
     function parse() {
-        $this->wiki->source = preg_replace_callback($this->regex, array(()$this, 'process'), $this->wiki->source);
+        $this->wiki->source = preg_replace_callback($this->regex, array(&$this, 'process'), $this->wiki->source);
 
     }
 
@@ -54,14 +54,14 @@ class Text_Wiki2_Parse_Page extends Text_Wiki2_Parse {
     *
     * @access public
     *
-    * @param array ()$matches The array of matches from parse().
+    * @param array &$matches The array of matches from parse().
     *
     * @return A delimited token number to be used as a placeholder in
     * the source text.
     *
     */
 
-    function process(()$matches)
+    function process(&$matches)
     {
         return $this->wiki->addToken($this->rule);
     }

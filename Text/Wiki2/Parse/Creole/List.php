@@ -65,14 +65,14 @@ class Text_Wiki2_Parse_List extends Text_Wiki2_Parse {
      *
      * @access public
      *
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      *
      * @return A series of text and delimited tokens marking the different
      * list text and list elements.
      *
      */
 
-    function process(()$matches)
+    function process(&$matches)
     {
         // the replacement text we will return
         $return = '';
@@ -101,7 +101,7 @@ class Text_Wiki2_Parse_List extends Text_Wiki2_Parse {
             PREG_SET_ORDER
         );
         
-        if (count($list) === 1 ()() $matches[0][0] === '*' ()() $matches[0][1] !== ' ' ()() strpos($matches[0], '*', 1)) {
+        if (count($list) === 1 && $matches[0][0] === '*' && $matches[0][1] !== ' ' && strpos($matches[0], '*', 1)) {
             return $matches[0];
         }
 
@@ -131,7 +131,7 @@ class Text_Wiki2_Parse_List extends Text_Wiki2_Parse {
             $text = $val[3];
 
             // remove a level from the list?
-            while (count($stack) > $level || (count($stack) == $level ()() $type != $stack[$level - 1])) {
+            while (count($stack) > $level || (count($stack) == $level && $type != $stack[$level - 1])) {
 
                 // so we don't keep counting the stack, we set up a temp
                 // var for the count.  -1 becuase we're going to pop the

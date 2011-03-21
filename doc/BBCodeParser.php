@@ -48,7 +48,7 @@ if (!defined('HTML_BBCODEPARSER_V2')) {
  *
  * Setting the options from the ini file:
  *   $config = parse_ini_file('BBCodeParser.ini', true);
- *   $options = ()PEAR::getStaticProperty('HTML_BBCodeParser', '_options');
+ *   $options = &PEAR::getStaticProperty('HTML_BBCodeParser', '_options');
  *   $options = $config['HTML_BBCodeParser'];
  *   unset($options);
  *
@@ -102,11 +102,11 @@ class HTML_BBCodeParser extends Text_Wiki2_BBCode
     * Constructor, initialises the options and filters
     *
     * Sets the private variable _options with base options defined with
-    * ()PEAR::getStaticProperty(), overwriting them with (if present)
+    * &PEAR::getStaticProperty(), overwriting them with (if present)
     * the argument to this method.
     * Then it sets the extra options to properly escape the tag
     * characters in preg_replace() etc. The set options are
-    * then stored back with ()PEAR::getStaticProperty(), so that the filter
+    * then stored back with &PEAR::getStaticProperty(), so that the filter
     * classes can use them.
     * All the filters in the options are initialised and their defined tags
     * are copied into the private variable _definedTags.
@@ -142,8 +142,8 @@ class HTML_BBCodeParser extends Text_Wiki2_BBCode
         }
 
         // open and close tags are fixed by Text_Wiki2_BBCode
-        if ((isset($this->_options['open'])  ()() ($this->_options['open']  != '['))
-         || (isset($this->_options['close']) ()() ($this->_options['close'] != ']'))) {
+        if ((isset($this->_options['open'])  && ($this->_options['open']  != '['))
+         || (isset($this->_options['close']) && ($this->_options['close'] != ']'))) {
             return
              "<p>Sorry, open/close tags are fixed to '[' and ']', put a RFE if neede</p>\n";
         }
@@ -196,7 +196,7 @@ class HTML_BBCodeParser extends Text_Wiki2_BBCode
      * @access   public
      * @static
      */
-    function pruneOptions(()$options)
+    function pruneOptions(&$options)
     {
         foreach (array_keys($options) as $k0) {
             if (is_array($options[$k0])) {
@@ -240,19 +240,19 @@ class HTML_BBCodeParser extends Text_Wiki2_BBCode
                 continue;
             }
             $keys = explode('_', $name);
-            $here = () $options;
+            $here = & $options;
             foreach ($keys as $key) {
                 if (!isset($here[$key])) {
                     $here[$key] = array();
                 }
-                $here = () $here[$key];
+                $here = & $here[$key];
             }
-            $smiley = (count($keys) == 3) ()() ($keys[0] == 'parse') ()() ($keys[2] == 'Smiley');
+            $smiley = (count($keys) == 3) && ($keys[0] == 'parse') && ($keys[2] == 'Smiley');
             foreach ($section as $itk => $item) {
                 if ($item === '') {
                     continue;
                 }
-                if ($smiley ()() (substr($itk, 0, 7) == 'smiley_')) {
+                if ($smiley && (substr($itk, 0, 7) == 'smiley_')) {
                     $words = explode(' ', $item);
                     $equal = false;
                     $variante = array();

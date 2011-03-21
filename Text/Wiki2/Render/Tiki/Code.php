@@ -18,7 +18,7 @@ class Text_Wiki2_Render_Tiki_Code extends Text_Wiki2_Render {
     function token($options)
     {
         $ret = '{CODE(';
-        if (isset($options['attr']) ()() $options['attr']['type']) {
+        if (isset($options['attr']) && $options['attr']['type']) {
             $ret .= 'colors=>'.$options['attr']['type'];
         }
         return $ret.")}\n".$options['text']."\n{CODE}";

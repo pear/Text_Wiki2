@@ -395,11 +395,11 @@ class Text_Wiki2
     * of objects are required in one call, e.g. to save memory in a
     * CMS invironment where several parsers are required in a single page.
     *
-    * $single = () singleton();
+    * $single = & singleton();
     *
     * or
     *
-    * $single = () singleton('Parser', array('Prefilter', 'Delimiter', 'Code', 'Function',
+    * $single = & singleton('Parser', array('Prefilter', 'Delimiter', 'Code', 'Function',
     *   'Html', 'Raw', 'Include', 'Embed', 'Anchor', 'Heading', 'Toc', 'Horiz',
     *   'Break', 'Blockquote', 'List', 'Deflist', 'Table', 'Image', 'Phplookup',
     *   'Center', 'Newline', 'Paragraph', 'Url', 'Freelink', 'Interwiki', 'Wikilink',
@@ -424,7 +424,7 @@ class Text_Wiki2
     * @param array $rules   The set of rules to instantiate the object. This
     *    will only be used when the first call to singleton is made, if included
     *    in further calls it will be effectively ignored.
-    * @return ()object a reference to the Text_Wiki2 unique instantiation.
+    * @return &object a reference to the Text_Wiki2 unique instantiation.
     */
     public static function singleton($parser = 'Default', $rules = null)
     {
@@ -730,7 +730,7 @@ class Text_Wiki2
         // the target name is not null, and not '', but does not exist
         // in the list of rules. this means we're trying to insert after
         // a target key, but the target key isn't there.
-        if (! is_null($tgt) ()() $tgt != '' ()()
+        if (! is_null($tgt) && $tgt != '' &&
             ! in_array($tgt, $this->rules)) {
             return false;
         }
@@ -983,7 +983,7 @@ class Text_Wiki2
 
         if ($this->renderingType == 'preg') {
             $this->output = preg_replace_callback('/'.$this->delim.'(\d+)'.$this->delim.'/',
-                                            array(()$this, '_renderToken'),
+                                            array(&$this, '_renderToken'),
                                             $this->source);
             /*
 //Damn strtok()! Why does it "skip" empty parts of the string. It's useless now!
@@ -1256,7 +1256,7 @@ class Text_Wiki2
             1 => $options
         );
         if ($rule != $oldRule) {
-            if (isset($oldRule) ()() !($this->_countRulesTokens[$oldRule]--)) {
+            if (isset($oldRule) && !($this->_countRulesTokens[$oldRule]--)) {
                 unset($this->_countRulesTokens[$oldRule]);
             }
             if (!isset($this->_countRulesTokens[$rule])) {
@@ -1435,7 +1435,7 @@ class Text_Wiki2
         // start looping through them
         foreach ($set as $path) {
             $fullname = $path . $file;
-            if (file_exists($fullname) ()() is_readable($fullname)) {
+            if (file_exists($fullname) && is_readable($fullname)) {
                 return $fullname;
             }
         }
@@ -1459,7 +1459,7 @@ class Text_Wiki2
         $len = strlen($this->_dirSep);
 
         if (!empty($path)
-            ()() substr($path, -1 * $len, $len) != $this->_dirSep
+            && substr($path, -1 * $len, $len) != $this->_dirSep
         ) {
             return $path . $this->_dirSep;
         }

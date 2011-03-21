@@ -67,14 +67,14 @@ class Text_Wiki2_Parse_Table extends Text_Wiki2_Parse {
      *
      * @access public
      *
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      *
      * @return A series of text and delimited tokens marking the different
      * table elements and cell text.
      *
      */
 
-    function process(()$matches)
+    function process(&$matches)
     {
         // our eventual return value
         $return = '';
@@ -103,7 +103,7 @@ class Text_Wiki2_Parse_Table extends Text_Wiki2_Parse {
             // cells are separated by pipes
             $cells = explode("|", $row);
             
-            if (count($cells) == 1 ()() $cells[0][0] == '=' ()() ($num_rows == 1 || $num_rows == count($rows)) ()() ! isset($caption)) {
+            if (count($cells) == 1 && $cells[0][0] == '=' && ($num_rows == 1 || $num_rows == count($rows)) && ! isset($caption)) {
                 $caption = trim(trim($cells[0], '='));
             
                 // start the caption...
@@ -141,12 +141,12 @@ class Text_Wiki2_Parse_Table extends Text_Wiki2_Parse {
                     $span = 1;
                     $attr = '';
                     
-                    while ($i + 1 < count($cells) ()() ! strlen($cells[$i + 1])) {
+                    while ($i + 1 < count($cells) && ! strlen($cells[$i + 1])) {
                         $i++;
                         $span++;
                     }
 
-                    if (strlen($cell) > 0 ()() $cell[0] == '=') {
+                    if (strlen($cell) > 0 && $cell[0] == '=') {
                         $attr = 'header';
                         $cell = trim($cell, '=');
                     }

@@ -19,7 +19,7 @@ class Text_Wiki2_Render_Creole_Raw extends Text_Wiki2_Render {
     {
         $text = $options['text'];
         if ($text == '\\') $text = ' ';
-        if (isset($options['type']) ()() $options['type'] == 'escape') {
+        if (isset($options['type']) && $options['type'] == 'escape') {
             $text = '~' . $text;
         }
         else {

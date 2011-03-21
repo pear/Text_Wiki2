@@ -52,14 +52,14 @@ class Text_Wiki2_Parse_Strong extends Text_Wiki2_Parse {
      *
      * @access public
      *
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      *
      * @return A pair of delimited tokens to be used as a placeholder in
      * the source text surrounding the text to be emphasized.
      *
      */
 
-    function process(()$matches)
+    function process(&$matches)
     {
         $text = $matches[1];
         //$text = $matches[1] ? $matches[1] : $matches[2];

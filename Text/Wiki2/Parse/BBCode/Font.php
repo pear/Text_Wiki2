@@ -58,19 +58,19 @@ class Text_Wiki2_Parse_Font extends Text_Wiki2_Parse {
      * - 'level' => the level of nesting (starting 0)
      * - 'size' => the size indicator
      *
-     * @param array ()$matches The array of matches from parse().
+     * @param array &$matches The array of matches from parse().
      * @return string Delimited by start/end tokens to be used as
      * placeholder in the source text surrounding the text to be sized.
      * @access public
      */
-    function process(()$matches)
+    function process(&$matches)
     {
         // nested block ?
         if (array_key_exists(3, $matches)) {
             $this->_level++;
             $expsub = preg_replace_callback(
                 $this->regex,
-                array(()$this, 'process'),
+                array(&$this, 'process'),
                 $matches[2]
             );
             $this->_level--;

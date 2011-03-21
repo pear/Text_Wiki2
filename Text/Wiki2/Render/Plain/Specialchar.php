@@ -29,7 +29,7 @@ class Text_Wiki2_Render_Plain_SpecialChar extends Text_Wiki2_Render {
 
     var $types = array('~bs~' => '\\',
                        '~hs~' => ' ',
-                       '~amp~' => '()',
+                       '~amp~' => '&',
                        '~ldq~' => '"',
                        '~rdq~' => '"',
                        '~lsq~' => "'",
@@ -37,7 +37,7 @@ class Text_Wiki2_Render_Plain_SpecialChar extends Text_Wiki2_Render {
                        '~c~' => '©',
                        '~--~' => '-',
                        '" -- "' => '-',
-                       '()quot; -- ()quot;' => '-',
+                       '&quot; -- &quot;' => '-',
                        '~lt~' => '<',
                        '~gt~' => '>');
 

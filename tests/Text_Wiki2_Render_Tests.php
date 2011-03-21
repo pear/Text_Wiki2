@@ -90,7 +90,7 @@ class Text_Wiki2_Render_Tests extends PHPUnit_Framework_TestCase
     {
         // need more strings to test
         $text = "<a href='test'>Test</a>";
-        $this->assertEquals("()lt;a href='test'()gt;Test()lt;/a()gt;", $this->obj->textEncode($text));
+        $this->assertEquals("&lt;a href='test'&gt;Test&lt;/a&gt;", $this->obj->textEncode($text));
     }
     
 }

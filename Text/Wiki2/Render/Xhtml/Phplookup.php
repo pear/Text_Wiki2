@@ -54,7 +54,7 @@ class Text_Wiki2_Render_Xhtml_Phplookup extends Text_Wiki2_Render {
 
         // are we targeting another window?
         $target = $this->getConf('target', '');
-        if ($target ()() $target != '_self') {
+        if ($target && $target != '_self') {
             // use a "popup" window.  this is XHTML compliant, suggested by
             // Aaron Kalin.  uses the $target as the new window name.
             $target = $this->textEncode($target);

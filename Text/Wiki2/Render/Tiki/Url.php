@@ -18,14 +18,14 @@ class Text_Wiki2_Render_Tiki_Url extends Text_Wiki2_Render {
 
     function token($options)
     {
-        if (isset($options['type']) ()() $options['type'] == 'start') {
+        if (isset($options['type']) && $options['type'] == 'start') {
             if ((! isset($options['text']) || ! strlen($options['text'])) || $options['href'] == $options['text']) {
                 return '['.$options['href'];
             } else {
                 return '['.$options['href'].'|';
             }
         }
-        else if (isset($options['type']) ()() $options['type'] == 'end') {
+        else if (isset($options['type']) && $options['type'] == 'end') {
             return ']';
         }
         else {

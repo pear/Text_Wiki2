@@ -74,14 +74,14 @@ class Text_Wiki2_Parse_Revise extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array ()$matches The array of matches from parse().
+    * @param array &$matches The array of matches from parse().
     *
     * @return string A pair of delimited tokens to be used as a
     * placeholder in the source text surrounding the teletype text.
     *
     */
     
-    function process(()$matches)
+    function process(&$matches)
     {
         $output = '';
         $src = $matches[1];
@@ -93,7 +93,7 @@ class Text_Wiki2_Parse_Revise extends Text_Wiki2_Parse {
         $ins = strpos($src, $insmark);
         
         // if neither is found, return right away
-        if ($del === false ()() $ins === false) {
+        if ($del === false && $ins === false) {
             return $matches[0];
         }
         

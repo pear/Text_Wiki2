@@ -66,13 +66,13 @@ class Text_Wiki2_Parse_Toc extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array ()$matches The array of matches from parse().
+    * @param array &$matches The array of matches from parse().
     *
     * @return string A token indicating the TOC collection point.
     *
     */
     
-    function process(()$matches)
+    function process(&$matches)
     {
         if (count($this->wiki->getTokens('Heading')) > 3) {
             return $this->wiki->addToken($this->rule).$matches[0];

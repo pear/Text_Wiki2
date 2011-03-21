@@ -104,7 +104,7 @@ class Text_Wiki2_Creole extends Text_Wiki2 {
         $this->setRenderConf('xhtml', 'url', 'target', null);
     }
 
-    function checkInnerTags(()$text) {
+    function checkInnerTags(&$text) {
         $started = array();
 		$i = false;
         while (($i = strpos($text, $this->delim, $i)) !== false) {
