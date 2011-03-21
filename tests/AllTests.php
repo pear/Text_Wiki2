@@ -38,4 +38,18 @@ class Text_Wiki2_AllTests
 
         return $suite;
     }
+
+    /**
+     * Autoloader for the test suite.
+     */
+    public static function autoload($className)
+    {
+        if (substr($className, 0, 10) != 'Text_Wiki2') {
+            return false;
+        }
+        $file = str_replace('_', '/', $className) . '.php';
+        return include $file;
+    }
 }
+
+spl_autoload_register(array('Text_Wiki2_AllTests', 'autoload'));
