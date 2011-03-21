@@ -23,9 +23,8 @@
  * @version    Release: @package_version@
  * @link       http://pear.php.net/package/Text_Wiki
  */
-class Text_Wiki2_Render {
-
-
+class Text_Wiki2_Render
+{
     /**
     *
     * Configuration options for this render rule.
@@ -90,7 +89,7 @@ class Text_Wiki2_Render {
     *
     */
 
-    function Text_Wiki2_Render(&$obj)
+    function __construct(Text_Wiki2 $obj)
     {
         // keep a reference to the calling Text_Wiki2 object
         $this->wiki =& $obj;
