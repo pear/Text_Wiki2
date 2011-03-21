@@ -61,7 +61,7 @@ class Text_Wiki2_Parse_Mediawiki_SetUp_Tests extends PHPUnit_Framework_TestCase
         $obj = Text_Wiki2::factory('Mediawiki');
         $testClassName = get_class($this);
         $ruleName = preg_replace('/Text_Wiki2_Parse_Mediawiki_(.+?)_Test/', '\\1', $testClassName);
-        $this->className = 'Text_Wiki2_Parse_' . $ruleName;
+        $this->className = 'Text_Wiki2_Parse_Mediawiki_' . $ruleName;
         $this->t = new $this->className($obj);
 
         if (file_exists(dirname(__FILE__) . '/fixtures/mediawiki_syntax_to_test_' . strtolower($ruleName) . '.txt')) {
@@ -160,8 +160,15 @@ class Text_Wiki2_Parse_Mediawiki_Emphasis_Test extends PHPUnit_Framework_TestCas
 
     public function testMediawikiParseEmphasisParse()
     {
-        $obj = $this->getMock('Text_Wiki2_Parse_Emphasis', array('process'), array(), 'Text_Wiki2_Parse_Emphasis_Parse_Mock', false);
-        $obj->wiki = $this->getMock('Text_Wiki2');
+        $obj = $this->getMock(
+            'Text_Wiki2_Parse_Mediawiki_Emphasis',
+            array('process'),
+            array(),
+            'Text_Wiki2_Parse_Emphasis_Parse_Mock',
+            false
+        );
+
+        $obj->wiki         = $this->getMock('Text_Wiki2');
         $obj->wiki->source = file_get_contents(dirname(__FILE__) . '/fixtures/mediawiki_syntax.txt');
 
         $lines = explode("\n", $obj->wiki->source);
@@ -174,7 +181,7 @@ class Text_Wiki2_Parse_Mediawiki_Emphasis_Test extends PHPUnit_Framework_TestCas
     public function testMediawikiParseEmphasisProcess()
     {
         $textwiki = Text_Wiki2::factory('Mediawiki');
-        $obj = new Text_Wiki2_Parse_Emphasis($textwiki);
+        $obj = new Text_Wiki2_Parse_Mediawiki_Emphasis($textwiki);
 
         $lines = array(
             "'''Bold text''' and ''italic text'' and even '''''bold italic text'''''",
