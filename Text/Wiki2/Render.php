@@ -99,7 +99,7 @@ class Text_Wiki2_Render {
         // strip the Text_Wiki2_Render_ part
         //           01234567890123456
         $tmp = get_class($this);
-        $tmp = substr($tmp, 17);
+        $tmp = substr($tmp, 18); // Text_Wiki2_Render_
 
         // split into pieces at the _ mark.
         // first part is format, second part is rule.
