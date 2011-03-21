@@ -99,7 +99,7 @@ class Text_Wiki2_Parse_Mediawiki_Wikilink extends Text_Wiki2_Parse {
     function Text_Wiki2_Parse_Mediawiki_Wikilink(&$obj)
     {
         $default = $this->conf;
-        parent::Text_Wiki2_Parse($obj);
+        parent::__construct($obj);
 
         // override config options for image if specified
         if (in_array('Image', $this->wiki->disable)) {
