@@ -33,10 +33,11 @@ require_once('Text/Wiki2.php');
  * @link       http://pear.php.net/package/Text_Wiki
  * @see        Text_Wiki2::Text_Wiki2()
  */
-class Text_Wiki2_Cowiki extends Text_Wiki2 {
-
-    function Text_Wiki2_Cowiki() {
-        parent::Text_Wiki2();
+class Text_Wiki2_Cowiki extends Text_Wiki2
+{
+    function __construct()
+    {
+        parent::__construct();
         $paths = $this->getPath('parse');
         $this->addPath('parse', str_replace('Default', 'Cowiki', $paths[0]));
     }

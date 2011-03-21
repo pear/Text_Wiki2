@@ -95,8 +95,9 @@ class Text_Wiki2_Creole extends Text_Wiki2 {
      * @param array $rules The set of rules to load for this object.
      */
 
-    function Text_Wiki2_Creole($rules = null) {
-        parent::Text_Wiki2($rules);
+    function __construct(array $rules = null)
+    {
+        parent::__construct($rules);
         $this->addPath('parse', $this->fixPath(dirname(__FILE__)).'Parse/Creole');
         $this->renderingType = 'char';
         $this->setRenderConf('xhtml', 'center', 'css', 'center');
