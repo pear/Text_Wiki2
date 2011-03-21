@@ -3,7 +3,7 @@
 
 require_once 'PHPUnit/Extensions/PhptTestSuite.php';
 
-require_once 'Text_Wiki2_Tests.php';
+require_once 'Text/Wiki2/Tests.php';
 require_once 'Text_Wiki2_Render_Tests.php';
 require_once 'Text_Wiki2_Render_Tiki_Tests.php';
 //require_once 'Text_Wiki2_Parse_Tiki_Tests.php';
