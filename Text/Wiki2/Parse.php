@@ -39,8 +39,6 @@
  */
 class Text_Wiki2_Parse
 {
-
-
     /**
     *
     * Configuration options for this parser rule.
@@ -117,8 +115,8 @@ class Text_Wiki2_Parse
         // to the tokens array. strip off the Text_Wiki2_Parse_ portion.
         // text_wiki_parse_
         // 0123456789012345
-        $tmp = substr(get_class($this), 16);
-        $this->rule = ucwords(strtolower($tmp));
+        $tmp        = explode('_', get_class($this));
+        $this->rule = ucwords(strtolower(end($tmp)));
 
         // override config options for the rule if specified
         if (isset($this->wiki->parseConf[$this->rule]) &&
