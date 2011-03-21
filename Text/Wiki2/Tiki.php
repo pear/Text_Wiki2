@@ -19,7 +19,7 @@
 /**
  * "master" class for handling the management and convenience
  */
-require_once('Text/Wiki2.php');
+require_once 'Text/Wiki2.php';
 
 /**
  * Base Text_Wiki2 handler class extension for tikiwiki markup
@@ -33,7 +33,8 @@ require_once('Text/Wiki2.php');
  * @link       http://pear.php.net/package/Text_Wiki
  * @see        Text_Wiki2::Text_Wiki2()
  */
-class Text_Wiki2_Tiki extends Text_Wiki2 {
+class Text_Wiki2_Tiki extends Text_Wiki2
+{
     var $rules = array(
         'Prefilter',
         'Delimiter',
@@ -82,8 +83,9 @@ class Text_Wiki2_Tiki extends Text_Wiki2 {
         'Tighten'
     );
 
-    function Text_Wiki2_Tiki($rules = null) {
-        parent::Text_Wiki2($rules);
+    function __construct($rules = null)
+    {
+        parent::__construct($rules);
         $this->addPath('parse', $this->fixPath(dirname(__FILE__)).'Parse/Tiki');
 //        $this->addPath('render', $this->fixPath(dirname(__FILE__)).'Render');
     }
