@@ -23,6 +23,8 @@ require_once 'Text/Wiki2/Parse.php';
  */
 require_once 'Text/Wiki2/Render.php';
 
+require_once 'Text/Wiki2/Exception.php';
+
 /**
  * Parse structured wiki text and render into arbitrary formats such as XHTML.
  *
@@ -216,12 +218,9 @@ class Text_Wiki2
     * token, and element 1 is an associative array where the key is an
     * option name and the value is an option value.
     *
-    * @access private
-    *
     * @var array
-    *
     */
-    protected $tokens = array();
+    public $tokens = array();
 
     /**
     * How many tokens generated pro rules.
@@ -241,12 +240,9 @@ class Text_Wiki2
     * This text will be transformed in-place, which means that it will
     * change as the rules are applied.
     *
-    * @access private
-    *
     * @var string
-    *
     */
-    protected $source = '';
+    public $source = '';
 
     /**
      * The output text
@@ -374,7 +370,7 @@ class Text_Wiki2
     */
     public function __construct(array $rules = null)
     {
-        if (is_array($rules)) {
+        if ($rules !== null) {
             $this->rules = array();
             foreach ($rules as $rule) {
                 $this->rules[] = ucfirst($rule);
@@ -383,11 +379,11 @@ class Text_Wiki2
 
         $this->addPath(
             'parse',
-            $this->fixPath(dirname(__FILE__)) . 'Wiki2/Parse/Default/'
+            $this->fixPath(__DIR__) . 'Wiki2/Parse/Default/'
         );
         $this->addPath(
             'render',
-            $this->fixPath(dirname(__FILE__)) . 'Wiki2/Render/'
+            $this->fixPath(__DIR__) . 'Wiki2/Render/'
         );
 
     }
@@ -434,11 +430,8 @@ class Text_Wiki2
     {
         static $only = array();
         if (!isset($only[$parser])) {
-            $ret = Text_Wiki2::factory($parser, $rules);
-            if (Text_Wiki2::isError($ret)) {
-                return $ret;
-            }
-            $only[$parser] =& $ret;
+            $ret           = Text_Wiki2::factory($parser, $rules);
+            $only[$parser] = $ret;
         }
         return $only[$parser];
     }
@@ -457,10 +450,10 @@ class Text_Wiki2
     public static function factory($parser = 'Default', $rules = null)
     {
         $class = 'Text_Wiki2_' . $parser;
-        $file = str_replace('_', '/', $class).'.php';
-        if (!class_exists($class)) {
+        $file = str_replace('_', '/', $class). '.php';
+        if (!class_exists($class, false)) {
             require_once $file;
-            if (!class_exists($class)) {
+            if (!class_exists($class, false)) {
                 throw new Text_Wiki2_Exception(
                     'Class ' . $class . ' does not exist after requiring '. $file .
                         ', install package ' . $class . "\n");
@@ -522,7 +515,6 @@ class Text_Wiki2
     * or the specific conf key value.
     *
     */
-
     function getParseConf($rule, $key = null)
     {
         $rule = ucwords(strtolower($rule));
@@ -541,10 +533,10 @@ class Text_Wiki2
         if (isset($this->parseConf[$rule][$key])) {
             // yes, return that value
             return $this->parseConf[$rule][$key];
-        } else {
-            // no
-            return null;
         }
+
+        // no
+        return null;
     }
 
 
@@ -628,11 +620,9 @@ class Text_Wiki2
         if (isset($this->renderConf[$format][$rule][$key])) {
             // yes, return that value
             return $this->renderConf[$format][$rule][$key];
-        } else {
-            // no
-            return null;
         }
-
+        // no
+        return null;
     }
 
     /**
@@ -701,10 +691,9 @@ class Text_Wiki2
         if (isset($this->formatConf[$format][$key])) {
             // yes, return that value
             return $this->formatConf[$format][$key];
-        } else {
-            // no
-            return null;
         }
+        // no
+        return null;
     }
 
 
@@ -928,23 +917,24 @@ class Text_Wiki2
         $this->source = $text;
 
         // reset the tokens.
-        $this->tokens = array();
+        $this->tokens            = array();
         $this->_countRulesTokens = array();
 
         // apply the parse() method of each requested rule to the source
         // text.
         foreach ($this->rules as $name) {
             // do not parse the rules listed in $disable
-            if (! in_array($name, $this->disable)) {
+            if (in_array($name, $this->disable)) {
+                continue;
+            }
 
-                // load the parsing object
-                $this->loadParseObj($name);
+            // load the parsing object
+            $this->loadParseObj($name);
 
-                // load may have failed; only parse if
-                // an object is in the array now
-                if (is_object($this->parseObj[$name])) {
-                    $this->parseObj[$name]->parse();
-                }
+            // load may have failed; only parse if
+            // an object is in the array now
+            if (is_object($this->parseObj[$name])) {
+                $this->parseObj[$name]->parse();
             }
         }
     }
@@ -963,7 +953,6 @@ class Text_Wiki2
     * @return string The transformed wiki text.
     *
     */
-
     function render($format = 'Xhtml')
     {
         // the rendering method we're going to use from each rule
@@ -981,9 +970,6 @@ class Text_Wiki2
 
         // load the format object, or crap out if we can't find it
         $result = $this->loadFormatObj($format);
-        if ($this->isError($result)) {
-            return $result;
-        }
 
         // pre-rendering activity
         if (is_object($this->formatObj[$format])) {
@@ -1044,9 +1030,8 @@ class Text_Wiki2
                             } elseif ($opts['type'] == 'end') {
                                 if ($tokenStack[count($tokenStack) - 1] != $rule) {
                                     throw new Text_Wiki2_Exception('Unbalanced tokens, check your syntax');
-                                } else {
-                                    array_pop($tokenStack);
                                 }
+                                array_pop($tokenStack);
                             }
                         }
 
@@ -1084,7 +1069,9 @@ class Text_Wiki2
         }
 
         if (count($this->_renderCallbacks)) {
-            return $this->error('Render callbacks left over after processing finished');
+            throw new Text_Wiki2_Exception(
+                'Render callbacks left over after processing finished'
+            );
         }
         /*
         while (count($this->_renderCallbacks)) {
@@ -1168,23 +1155,20 @@ class Text_Wiki2
     * @return array An array of tokens.
     *
     */
-
-    function getTokens($rules = null)
+    function getTokens(array $rules = null)
     {
-        if (is_null($rules)) {
+        if ($rules === null) {
             return $this->tokens;
-        } else {
-            settype($rules, 'array');
-            $result = array();
-            foreach ($this->tokens as $key => $val) {
-                if (in_array($val[0], $rules)) {
-                    $result[$key] = $val;
-                }
-            }
-            return $result;
         }
+        settype($rules, 'array');
+        $result = array();
+        foreach ($this->tokens as $key => $val) {
+            if (in_array($val[0], $rules)) {
+                $result[$key] = $val;
+            }
+        }
+        return $result;
     }
-
 
     /**
     *
@@ -1237,10 +1221,9 @@ class Text_Wiki2
         if ($id_only) {
             // return the last token number
             return $id;
-        } else {
-            // return the token number with delimiters
-            return $this->delim . $id . $this->delim;
         }
+        // return the token number with delimiters
+        return $this->delim . $id . $this->delim;
     }
 
 
@@ -1296,27 +1279,25 @@ class Text_Wiki2
     */
     public function loadParseObj($rule)
     {
-        $rule = ucwords(strtolower($rule));
-        $file = $rule . '.php';
+        $rule  = ucwords(strtolower($rule));
         $class = "Text_Wiki2_Parse_$rule";
 
-        if (! class_exists($class)) {
-            $loc = $this->findFile('parse', $file);
-            if ($loc) {
-                // found the class
-                include_once $loc;
-            } else {
+        $base   = get_class($this);
+        $_class = "{$base}_{$rule}";
+        $_file  = str_replace('_', '/', $_class) . '.php';
+
+        if (!class_exists($_class, false)) {
+            if ((include $_file) === false) {
+
                 // can't find the class
                 $this->parseObj[$rule] = null;
                 // can't find the class
-                return $this->error(
-                    "Parse rule '$rule' not found"
+                throw new Text_Wiki2_Exception(
+                    "Parse rule '$rule' not found: {$_class}"
                 );
             }
         }
-
-        $this->parseObj[$rule] =& new $class($this);
-
+        $this->parseObj[$rule] = new $_class($this);
     }
 
 
@@ -1333,27 +1314,23 @@ class Text_Wiki2
     function loadRenderObj($format, $rule)
     {
         $format = ucwords(strtolower($format));
-        $rule = ucwords(strtolower($rule));
-        $file = "$format/$rule.php";
-        $class = "Text_Wiki2_Render_$format" . "_$rule";
+        $rule   = ucwords(strtolower($rule));
+        $file   = "{$format}/{$rule}.php";
+        $class  = "Text_Wiki2_Render_{$format}" . "_{$rule}";
 
-        if (! class_exists($class)) {
+        if (!class_exists($class, false)) {
             // load the class
             $loc = $this->findFile('render', $file);
-            if ($loc) {
-                // found the class
-                include_once $loc;
-            } else {
+            if ($loc === false) {
                 // can't find the class
-                return $this->error(
-                    "Render rule '$rule' in format '$format' not found"
+                throw new Text_Wiki2_Exception(
+                    "Render rule '$rule' in format '$format' not found: {$class}"
                 );
             }
+            include_once $loc;
         }
-
-        $this->renderObj[$rule] =& new $class($this);
+        $this->renderObj[$rule] = new $class($this);
     }
-
 
     /**
     *
@@ -1371,20 +1348,18 @@ class Text_Wiki2
         $file = $format . '.php';
         $class = "Text_Wiki2_Render_$format";
 
-        if (! class_exists($class)) {
+        if (! class_exists($class, false)) {
             $loc = $this->findFile('render', $file);
-            if ($loc) {
-                // found the class
-                include_once $loc;
-            } else {
+            if ($loc === false) {
                 // can't find the class
-                return $this->error(
+                throw new Text_Wiki2_Exception(
                     "Rendering format class '$class' not found"
                 );
             }
+            include_once $loc;
         }
 
-        $this->formatObj[$format] =& new $class($this);
+        $this->formatObj[$format] = new $class($this);
     }
 
 
@@ -1474,64 +1449,20 @@ class Text_Wiki2
     *
     * Append a trailing '/' to paths, unless the path is empty.
     *
-    * @access private
-    *
     * @param string $path The file path to fix
     *
     * @return string The fixed file path
     *
     */
-
-    function fixPath($path)
+    public function fixPath($path)
     {
         $len = strlen($this->_dirSep);
 
-        if (! empty($path) &&
-            substr($path, -1 * $len, $len) != $this->_dirSep)    {
+        if (!empty($path)
+            && substr($path, -1 * $len, $len) != $this->_dirSep
+        ) {
             return $path . $this->_dirSep;
-        } else {
-            return $path;
         }
-    }
-
-
-    /**
-    *
-    * Simple error-object generator.
-    *
-    * @access public
-    *
-    * @param string $message The error message.
-    *
-    * @return object PEAR_Error
-    *
-    */
-
-    function &error($message)
-    {
-        if (! class_exists('PEAR_Error')) {
-            include_once 'PEAR.php';
-        }
-        return PEAR::throwError($message);
-    }
-
-
-    /**
-    *
-    * Simple error checker.
-    *
-    * @access public
-    *
-    * @param mixed $obj Check if this is a PEAR_Error object or not.
-    *
-    * @return bool True if a PEAR_Error, false if not.
-    *
-    */
-
-    function isError(&$obj)
-    {
-        return is_a($obj, 'PEAR_Error');
+        return $path;
     }
 }
-
-?>
