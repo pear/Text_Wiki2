@@ -52,7 +52,7 @@ class Text_Wiki2_Parse_Default_Freelink extends Text_Wiki2_Parse {
     * 
     * @access public
     * 
-    * @param object &$obj The calling "parent" Text_Wiki2 object.
+    * @param object ()$obj The calling "parent" Text_Wiki2 object.
     * 
     */
     
@@ -68,11 +68,11 @@ class Text_Wiki2_Parse_Default_Freelink extends Text_Wiki2_Parse {
             '/' .                                                   // START regex
             "\\(\\(" .                                               // double open-parens
             "(" .                                                   // START freelink page patter
-            "[-A-Za-z0-9 _+\\/.,;:!?'\"\\[\\]\\{\\}&".$any."\xc0-\xff]+" . // 1 or more of just about any character
+            "[-A-Za-z0-9 _+\\/.,;:!?'\"\\[\\]\\{\\}()".$any."\xc0-\xff]+" . // 1 or more of just about any character
             ")" .                                                   // END  freelink page pattern
             "(" .                                                   // START display-name
             "\|" .                                                   // a pipe to start the display name
-            "[-A-Za-z0-9 _+\\/.,;:!?'\"\\[\\]\\{\\}&".$any."\xc0-\xff]+" . // 1 or more of just about any character
+            "[-A-Za-z0-9 _+\\/.,;:!?'\"\\[\\]\\{\\}()".$any."\xc0-\xff]+" . // 1 or more of just about any character
             ")?" .                                                   // END display-name pattern 0 or 1
             "(" .                                                   // START pattern for named anchors
             "\#" .                                                   // a hash mark
@@ -97,14 +97,14 @@ class Text_Wiki2_Parse_Default_Freelink extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token to be used as a placeholder in
     * the source text, plus any text priot to the match.
     *
     */
     
-    function process(&$matches)
+    function process(()$matches)
     {
         // use nice variable names
         $page = $matches[1];

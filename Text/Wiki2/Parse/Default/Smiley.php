@@ -87,11 +87,11 @@ class Text_Wiki2_Parse_Default_Smiley extends Text_Wiki2_Parse {
      * Constructor.
      * We override the constructor to build up the regex from config
      *
-     * @param object &$obj the base conversion handler
+     * @param object ()$obj the base conversion handler
      * @return The parser object
      * @access public
      */
-    function __construct(&$obj)
+    function __construct(()$obj)
     {
         $default = $this->conf;
         parent::__construct($obj);
@@ -106,19 +106,19 @@ class Text_Wiki2_Parse_Default_Smiley extends Text_Wiki2_Parse {
             for ($i = 1; $i < count($def); $i++) {
                 if ($i > 1) {
                     $cur = $def[$i];
-                    $this->_smileys[$cur] = &$this->_smileys[$smiley];
+                    $this->_smileys[$cur] = ()$this->_smileys[$smiley];
                 } else {
                     $cur = $smiley;
                 }
                 $len = strlen($cur);
-                if (($cur{0} == ':') && ($len > 2) && ($cur{$len - 1} == ':')) {
+                if (($cur{0} == ':') ()() ($len > 2) ()() ($cur{$len - 1} == ':')) {
                     $reg1 .= $sep1 . preg_quote(substr($cur, 1, -1), '#');
                     $sep1 = '|';
                     continue;
                 }
-                if ($autoNose && ($len === 2)) {
+                if ($autoNose ()() ($len === 2)) {
                     $variante = $cur{0} . '-' . $cur{1};
-                    $this->_smileys[$variante] = &$this->_smileys[$smiley];
+                    $this->_smileys[$variante] = ()$this->_smileys[$smiley];
                     $cur = preg_quote($cur{0}, '#') . '-?' . preg_quote($cur{1}, '#');
                 } else {
                     $cur = preg_quote($cur, '#');
@@ -139,11 +139,11 @@ class Text_Wiki2_Parse_Default_Smiley extends Text_Wiki2_Parse {
      *     'name' => the name of the smiley
      *     'desc' => the description of the smiley
      *
-     * @param array &$matches The array of matches from parse().
+     * @param array ()$matches The array of matches from parse().
      * @return string Delimited token representing the smiley
      * @access public
      */
-    function process(&$matches)
+    function process(()$matches)
     {
         // tokenize
         return $this->wiki->addToken($this->rule,

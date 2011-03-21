@@ -36,7 +36,7 @@ class Text_Wiki2_Render_Tiki_Colortext extends Text_Wiki2_Render {
     
     function token($options)
     {
-        if (isset($options['color']) && !in_array($options['color'], $this->colors)) {
+        if (isset($options['color']) ()() !in_array($options['color'], $this->colors)) {
             $options['color'] = '#' . $options['color'];
         }
         

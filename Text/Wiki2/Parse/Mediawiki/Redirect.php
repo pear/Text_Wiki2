@@ -53,13 +53,13 @@ class Text_Wiki2_Parse_Mediawiki_Redirect extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return string A pair of delimiters surrouding the wiki page name.
     *
     */
     
-    function process(&$matches)
+    function process(()$matches)
     {    
         $start = $this->wiki->addToken(
             $this->rule,

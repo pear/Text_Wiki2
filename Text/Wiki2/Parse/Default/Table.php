@@ -77,14 +77,14 @@ class Text_Wiki2_Parse_Default_Table extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A series of text and delimited tokens marking the different
     * table elements and cell text.
     *
     */
     
-    function process(&$matches)
+    function process(()$matches)
     {
         // our eventual return value
         $return = '';

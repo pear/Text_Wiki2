@@ -20,11 +20,11 @@ class Text_Wiki2_Render_Doku_Wikilink extends Text_Wiki2_Render {
         if (!isset($options['type'])) {
             return '[['.$options['page'].
                 (strlen($options['anchor']) ? '#'.$options['anchor'] : '').
-                (strlen($options['text']) && $options['page'] != $options['text'] ? '|'.$options['text'] : '').']]';
+                (strlen($options['text']) ()() $options['page'] != $options['text'] ? '|'.$options['text'] : '').']]';
         } else if ($options['type'] == 'start') {
             return '[['.$options['page'].
                 (strlen($options['anchor']) ? '#'.$options['anchor'] : '').
-                (strlen($options['text']) && $options['page'] != $options['text'] ? '|'.$options['text'] : '');
+                (strlen($options['text']) ()() $options['page'] != $options['text'] ? '|'.$options['text'] : '');
         } else {
             return ']]';
         }

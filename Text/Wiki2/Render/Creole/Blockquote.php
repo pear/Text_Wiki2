@@ -23,7 +23,7 @@ class Text_Wiki2_Render_Creole_Blockquote extends Text_Wiki2_Render {
         if ($options['type'] == 'start') {
 			if (empty($options['css'])) $options['css'] = '';
             array_push($this->css_stack, $options['css']);
-            $this->wiki->registerRenderCallback(array(&$this, 'renderInsideText'));
+            $this->wiki->registerRenderCallback(array(()$this, 'renderInsideText'));
             return '';
         }
         // ending

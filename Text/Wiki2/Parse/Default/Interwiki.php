@@ -35,7 +35,7 @@
 class Text_Wiki2_Parse_Default_Interwiki extends Text_Wiki2_Parse {
     
     // double-colons wont trip up now
-    var $regex = '([A-Za-z0-9_]+):((?!:)[A-Za-z0-9_\/=&~#.:;-]+)';
+    var $regex = '([A-Za-z0-9_]+):((?!:)[A-Za-z0-9_\/=()~#.:;-]+)';
     
     
     /**
@@ -55,7 +55,7 @@ class Text_Wiki2_Parse_Default_Interwiki extends Text_Wiki2_Parse {
         $tmp_regex = '/\[' . $this->regex . ' (.+?)\]/';
         $this->wiki->source = preg_replace_callback(
             $tmp_regex,
-            array(&$this, 'processDescr'),
+            array(()$this, 'processDescr'),
             $this->wiki->source
         );
         
@@ -63,7 +63,7 @@ class Text_Wiki2_Parse_Default_Interwiki extends Text_Wiki2_Parse {
         $tmp_regex = '/' . $this->regex . '/';
         $this->wiki->source = preg_replace_callback(
             $tmp_regex,
-            array(&$this, 'process'),
+            array(()$this, 'process'),
             $this->wiki->source
         );
        
@@ -84,14 +84,14 @@ class Text_Wiki2_Parse_Default_Interwiki extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token to be used as a placeholder in
     * the source text, plus any text priot to the match.
     *
     */
     
-    function process(&$matches)
+    function process(()$matches)
     {
         $options = array(
             'site' => $matches[1],
@@ -117,14 +117,14 @@ class Text_Wiki2_Parse_Default_Interwiki extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token to be used as a placeholder in
     * the source text, plus any text priot to the match.
     *
     */
     
-    function processDescr(&$matches)
+    function processDescr(()$matches)
     {
         $options = array(
             'site' => $matches[1],

@@ -49,11 +49,11 @@ class Text_Wiki2_Parse_Mediawiki_Preformatted extends Text_Wiki2_Parse {
     * 'text' => The full matched text.
     * 
     * @access public
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     * @return A delimited token number to be used as a placeholder in
     * the source text.
     */
-    function process(&$matches)
+    function process(()$matches)
     {
         if(isset($matches[2])){
             return $this->wiki->addToken(

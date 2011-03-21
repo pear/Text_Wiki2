@@ -55,14 +55,14 @@ class Text_Wiki2_Parse_Image extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token number to be used as a placeholder in
     * the source text.
     *
     */
     
-    function process(&$matches)
+    function process(()$matches)
     {
         if ($matches[3] != 'wiki:') {
             $matches[4] = $matches[3].$matches[4];
@@ -77,15 +77,15 @@ class Text_Wiki2_Parse_Image extends Text_Wiki2_Parse {
             $options = array('src' => substr($matches[4], 0, $pos));
             $attr = substr($matches[4], $pos + 1);
             $parts = explode('x', $attr);
-            if (isset($parts[0]) && $parts[0] != '') {
+            if (isset($parts[0]) ()() $parts[0] != '') {
                 $options['attr']['width'] = $parts[0];
             }
-            if (isset($parts[1]) && $parts[1] != '') {
+            if (isset($parts[1]) ()() $parts[1] != '') {
                 $options['attr']['height'] = $parts[1];
             }
         }
 
-        if (strlen($matches[2]) && strlen($matches[5])) {
+        if (strlen($matches[2]) ()() strlen($matches[5])) {
             $options['attr']['align'] = 'center';
         } elseif (strlen($matches[2])) {
             $options['attr']['align'] = 'right';

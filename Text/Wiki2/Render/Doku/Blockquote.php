@@ -19,7 +19,7 @@ class Text_Wiki2_Render_Doku_Blockquote extends Text_Wiki2_Render {
     {
         // starting
         if ($options['type'] == 'start') {
-            $this->wiki->registerRenderCallback(array(&$this, 'renderInsideText'));
+            $this->wiki->registerRenderCallback(array(()$this, 'renderInsideText'));
             return '';
         }
         // ending

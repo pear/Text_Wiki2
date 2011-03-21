@@ -25,13 +25,13 @@ class Text_Wiki2_Parse_Image extends Text_Wiki2_Parse {
      * can set the $regex property dynamically (we need to include the
      * Text_Wiki2 $delim character).
      *
-     * @param object &$obj The calling "parent" Text_Wiki2 object.
+     * @param object ()$obj The calling "parent" Text_Wiki2 object.
      *
      * @param string $name The token name to use for this rule.
      *
      */
 
-    function __construct(&$obj)
+    function __construct(()$obj)
     {
         parent::__construct($obj);
         $this->regex = '/{{([^' . $this->wiki->delim . ']*)(\|([^' . $this->wiki->delim . ']*))?}}/U';
@@ -44,13 +44,13 @@ class Text_Wiki2_Parse_Image extends Text_Wiki2_Parse {
      *
      * @access public
      *
-     * @param array &$matches The array of matches from parse().
+     * @param array ()$matches The array of matches from parse().
      *
      * @return string A token marking the horizontal rule.
      *
      */
 
-    function process(&$matches)
+    function process(()$matches)
     {
         $src = trim($matches[1]);
 		$src = ltrim($src, '/');

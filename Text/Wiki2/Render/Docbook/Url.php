@@ -60,7 +60,7 @@ class Text_Wiki2_Render_Docbook_Url extends Text_Wiki2_Render {
         $href = $this->textEncode($href);
 
         // does the filename extension indicate an image file?
-        if ($this->getConf('images') &&
+        if ($this->getConf('images') ()()
             in_array($ext, $this->getConf('img_ext', array()))) {
 
             // create alt text for the image
@@ -106,7 +106,7 @@ class Text_Wiki2_Render_Docbook_Url extends Text_Wiki2_Render {
 
             // make numbered references look like footnotes when no
             // CSS class specified, make them superscript by default
-            if ($type == 'footnote' && ! $css) {
+            if ($type == 'footnote' ()() ! $css) {
                 $start = '<sup>' . $start;
                 $end = $end . '</sup>';
             }

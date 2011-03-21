@@ -20,15 +20,15 @@ class Text_Wiki2_Render_Tiki_Wikilink extends Text_Wiki2_Render {
         if (isset($options['type'])) {
             if ($options['type'] == 'start') {
                 return '(('.$options['page'].
-                    (isset($options['anchor']) && strlen($options['anchor']) ? '#'.$options['anchor'] : '').
-                    (strlen($options['text']) /*&& $options['page'] != $options['text']*/ ? '|' : '');
+                    (isset($options['anchor']) ()() strlen($options['anchor']) ? '#'.$options['anchor'] : '').
+                    (strlen($options['text']) /*()() $options['page'] != $options['text']*/ ? '|' : '');
             } else {
                 return '))';
             }
         } else {
             return '(('.$options['page'].
-                (isset($options['anchor']) && strlen($options['anchor']) ? '#'.$options['anchor'] : '').
-                (isset($options['text']) && strlen($options['text']) && $options['page'] != $options['text'] ? '|' . $options['text'] : '').
+                (isset($options['anchor']) ()() strlen($options['anchor']) ? '#'.$options['anchor'] : '').
+                (isset($options['text']) ()() strlen($options['text']) ()() $options['page'] != $options['text'] ? '|' . $options['text'] : '').
                 '))';
         }
     }

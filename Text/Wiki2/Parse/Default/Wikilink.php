@@ -59,11 +59,11 @@ class Text_Wiki2_Parse_Default_Wikilink extends Text_Wiki2_Parse
     *
     * @access public
     *
-    * @param object &$obj The calling "parent" Text_Wiki2 object.
+    * @param object ()$obj The calling "parent" Text_Wiki2 object.
     *
     */
 
-    function Text_Wiki2_Parse_Default_Wikilink(&$obj)
+    function Text_Wiki2_Parse_Default_Wikilink(()$obj)
     {
         parent::__construct($obj);
 
@@ -120,7 +120,7 @@ class Text_Wiki2_Parse_Default_Wikilink extends Text_Wiki2_Parse
         $tmp_regex = '/\[' . $this->regex . ' (.+?)\]/'.($this->getConf('utf-8') ? 'u' : '');
         $this->wiki->source = preg_replace_callback(
             $tmp_regex,
-            array(&$this, 'processDescr'),
+            array(()$this, 'processDescr'),
             $this->wiki->source
         );
 
@@ -136,7 +136,7 @@ class Text_Wiki2_Parse_Default_Wikilink extends Text_Wiki2_Parse
         $tmp_regex = "/(^|[^{$either}\-_]){$this->regex}/".($this->getConf('utf-8') ? 'u' : '');
         $this->wiki->source = preg_replace_callback(
             $tmp_regex,
-            array(&$this, 'process'),
+            array(()$this, 'process'),
             $this->wiki->source
         );
     }
@@ -148,14 +148,14 @@ class Text_Wiki2_Parse_Default_Wikilink extends Text_Wiki2_Parse
     *
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token to be used as a placeholder in
     * the source text, plus any text priot to the match.
     *
     */
 
-    function processDescr(&$matches)
+    function processDescr(()$matches)
     {
         // set the options
         $options = array(
@@ -176,14 +176,14 @@ class Text_Wiki2_Parse_Default_Wikilink extends Text_Wiki2_Parse
     *
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token to be used as a placeholder in
     * the source text, plus any text prior to the match.
     *
     */
 
-    function process(&$matches)
+    function process(()$matches)
     {
         // when prefixed with !, it's explicitly not a wiki link.
         // return everything as it was.

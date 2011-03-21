@@ -62,14 +62,14 @@ class Text_Wiki2_Parse_Code extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token number to be used as a placeholder in
     * the source text.
     *
     */
     
-    function process(&$matches)
+    function process(()$matches)
     {
         // are there additional attribute arguments?
         $args = trim(html_entity_decode($matches[1]));
@@ -86,7 +86,7 @@ class Text_Wiki2_Parse_Code extends Text_Wiki2_Parse {
         	// get the attributes...
         	//$attr = $this->getAttrs($args);
             foreach (explode(',', $args) as $part) {
-                if (false !== ($eq = strpos($part, '=')) && $eq != strlen($part) - 1) {
+                if (false !== ($eq = strpos($part, '=')) ()() $eq != strlen($part) - 1) {
                     $attr[substr($part, 0, $eq)] = substr($part, $eq + 1 + ($part[$eq + 1] == '>' ? 1 : 0));
                 } else {
                     $attr[$part] = '';

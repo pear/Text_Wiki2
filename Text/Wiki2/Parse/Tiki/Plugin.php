@@ -49,7 +49,7 @@ class Text_Wiki2_Parse_Plugin extends Text_Wiki2_Parse {
      * @access public
      * @var string
      */
-    var $regexArgs = '#(\w+?)=(?:>|&gt;)?([^"\'][^,]+?|"[^"]+"|\'[^\']+\')#';
+    var $regexArgs = '#(\w+?)=(?:>|()gt;)?([^"\'][^,]+?|"[^"]+"|\'[^\']+\')#';
 
     /**
     *
@@ -63,9 +63,9 @@ class Text_Wiki2_Parse_Plugin extends Text_Wiki2_Parse {
     */
 
     // var $regex = '/\{([A-Z]+?)\((.*?)\)}((?:(?R)|.)*?)\{\1}/msi';
-    var $regex = '#(?:\{([A-Z]+?)\((.*?)\)}|(~pp~)|(~np~)|(&lt;pre&gt;))
+    var $regex = '#(?:\{([A-Z]+?)\((.*?)\)}|(~pp~)|(~np~)|(()lt;pre()gt;))
                   ((?:(?R)|.)*?)
-                  (?(1)\{\1})(?(3)~/pp~)(?(4)~/np~)(?(5)&lt;/pre&gt;)#mixs';
+                  (?(1)\{\1})(?(3)~/pp~)(?(4)~/np~)(?(5)()lt;/pre()gt;)#mixs';
 
     /**
     *
@@ -75,14 +75,14 @@ class Text_Wiki2_Parse_Plugin extends Text_Wiki2_Parse {
     *
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token number to be used as a placeholder in
     * the source text.
     *
     */
 
-    function process(&$matches)
+    function process(()$matches)
     {
         // preparsed area
         if (isset($matches[3]) || isset($matches[5])) {
@@ -126,7 +126,7 @@ class Text_Wiki2_Parse_Plugin extends Text_Wiki2_Parse {
         $res = $func($matches[6], $attr);
         return preg_replace_callback(
                 $this->regex,
-                array(&$this, 'process'),
+                array(()$this, 'process'),
                 $res
             );
     }

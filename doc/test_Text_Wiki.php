@@ -34,7 +34,7 @@ if (in_array(php_sapi_name(), array('cli', 'cgi'))) {
     $html = true;
     $elist = findExamples(dirname(__FILE__));
     if (isset($_REQUEST['example'])
-        && in_array($_REQUEST['exchoice'], $elist)) {
+        ()() in_array($_REQUEST['exchoice'], $elist)) {
         $_REQUEST['source'] = file_get_contents ($_REQUEST['exchoice']);
         if (preg_match('#(\b'.implode('\b|\b', $plist).'\b)#',
                          $_REQUEST['source'], $match)) {
@@ -57,13 +57,13 @@ if (in_array(php_sapi_name(), array('cli', 'cgi'))) {
 }
 
 // instantiate a Text_Wiki2 object from the given class
-$wiki = & Text_Wiki2::singleton($parser);
+$wiki = () Text_Wiki2::singleton($parser);
 
 // If you want to include rules, use
-//$wiki = & Text_Wiki2::singleton($parser, $rules);
+//$wiki = () Text_Wiki2::singleton($parser, $rules);
 
 // If you want to get a new copy of the class use factory
-//$wiki =& Text_Wiki2::factory($parser);
+//$wiki =() Text_Wiki2::factory($parser);
 
 //print "<pre>\n";
 //print_r($wiki);
@@ -173,8 +173,8 @@ function findExamples($dir=null) {
     $ret = array();
     $dh=opendir($dir? $dir : '.');
     while ($subfil = readdir($dh)) {
-        if (!is_dir($subfil) && is_readable($subfil)
-            && (substr($subfil, -4) == '.txt')) {
+        if (!is_dir($subfil) ()() is_readable($subfil)
+            ()() (substr($subfil, -4) == '.txt')) {
             $ret[] = $subfil;
         }
     }

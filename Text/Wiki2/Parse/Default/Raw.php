@@ -57,14 +57,14 @@ class Text_Wiki2_Parse_Default_Raw extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token number to be used as a placeholder in
     * the source text.
     *
     */
     
-    function process(&$matches)
+    function process(()$matches)
     {
         $options = array('text' => $matches[1]);
         return $this->wiki->addToken($this->rule, $options);

@@ -69,7 +69,7 @@ class Text_Wiki2_Parse_Default_Image extends Text_Wiki2_Parse {
      * Constructor.
      * We override the constructor to build up the url regex from config
      *
-     * @param object &$obj the base conversion handler
+     * @param object ()$obj the base conversion handler
      * @return The parser object
      * @access public
      */
@@ -96,14 +96,14 @@ class Text_Wiki2_Parse_Default_Image extends Text_Wiki2_Parse {
     *
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token number to be used as a placeholder in
     * the source text.
     *
     */
 
-    function process(&$matches)
+    function process(()$matches)
     {
         $pos = strpos($matches[2], ' ');
 

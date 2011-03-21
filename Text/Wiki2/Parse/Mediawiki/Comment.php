@@ -46,11 +46,11 @@ class Text_Wiki2_Parse_Mediawiki_Comment extends Text_Wiki2_Parse {
     * Generates a replacement token for the matched text.
     *
     * @access public
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     * @return string A delimited token to be used as a placeholder in
     * the source text.
     */
-    function process(&$matches)
+    function process(()$matches)
     {
         return '';
     }

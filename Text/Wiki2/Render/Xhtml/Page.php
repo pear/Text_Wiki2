@@ -40,7 +40,7 @@ class Text_Wiki2_Render_Xhtml_Page extends Text_Wiki2_Render {
 
     function token($options)
     {
-        return 'PAGE MARKER HERE*&^%$#^$%*PAGEMARKERHERE';
+        return 'PAGE MARKER HERE*()^%$#^$%*PAGEMARKERHERE';
     }
 }
 ?>

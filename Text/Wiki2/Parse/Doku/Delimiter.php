@@ -41,7 +41,7 @@ class Text_Wiki2_Parse_Delimiter extends Text_Wiki2_Parse
     * can set the $regex property dynamically (we need to include the
     * Text_Wiki2 $delim character.
     * 
-    * @param object &$obj The calling "parent" Text_Wiki2 object.
+    * @param object ()$obj The calling "parent" Text_Wiki2 object.
     * 
     * @param string $name The token name to use for this rule.
     * 
@@ -61,14 +61,14 @@ class Text_Wiki2_Parse_Delimiter extends Text_Wiki2_Parse
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token number to be used as a placeholder in
     * the source text.
     *
     */
     
-    function process(&$matches)
+    function process(()$matches)
     {    
         return $this->wiki->addToken(
             $this->rule,

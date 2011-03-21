@@ -109,7 +109,7 @@ class Text_Wiki2_Render_Xhtml_Image extends Text_Wiki2_Render {
 
         // stephane@metacites.net -- 25/07/2004
         // try to guess width and height
-        if (! isset($options['attr']['width']) &&
+        if (! isset($options['attr']['width']) ()()
             ! isset($options['attr']['height'])) {
 
             // does the source refer to a local file or a URL?

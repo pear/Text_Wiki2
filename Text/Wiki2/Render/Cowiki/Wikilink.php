@@ -20,7 +20,7 @@ class Text_Wiki2_Render_CoWiki_Wikilink extends Text_Wiki2_Render {
         if ($options['type'] == 'start') {
             return '(('.$options['page'].
                 (strlen($options['anchor']) ? '#'.$options['anchor'] : '').
-                (strlen($options['text']) /*&& $options['page'] != $options['text']*/ ? ')(' : '');
+                (strlen($options['text']) /*()() $options['page'] != $options['text']*/ ? ')(' : '');
         } else {
             return '))';
         }

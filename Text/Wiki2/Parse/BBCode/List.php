@@ -101,18 +101,18 @@ class Text_Wiki2_Parse_List extends Text_Wiki2_Parse {
      *
      * 'key' => the optional starting number/letter (not for items)
      *
-     * @param array &$matches The array of matches from parse().
+     * @param array ()$matches The array of matches from parse().
      * @return A delimited token to be used as a placeholder in
      * the source text and containing the original block of text
      * @access public
      */
-    function process(&$matches)
+    function process(()$matches)
     {
         if (!empty($matches[3])) {
             $this->_level++;
             $expsub = preg_replace_callback(
                 $this->regex,
-                array(&$this, 'process'),
+                array(()$this, 'process'),
                 $matches[2]
             );
             $this->_level--;
@@ -128,7 +128,7 @@ class Text_Wiki2_Parse_List extends Text_Wiki2_Parse {
                 $format = $matches[1];
             } else {
                 $format =
-                    ($matches[1] >= 'a') && ($matches[1] <='z') ? 'a' : 'A';
+                    ($matches[1] >= 'a') ()() ($matches[1] <='z') ? 'a' : 'A';
                 $key = $matches[1];
             }
         } else {
@@ -137,7 +137,7 @@ class Text_Wiki2_Parse_List extends Text_Wiki2_Parse {
         $this->_count[$this->_level] = -1;
         $sub = preg_replace_callback(
             $this->regexElement,
-            array(&$this, 'processElement'),
+            array(()$this, 'processElement'),
             $expsub
         );
         $param = array(
@@ -167,12 +167,12 @@ class Text_Wiki2_Parse_List extends Text_Wiki2_Parse {
      *
      * 'count' => the item ordeer at this level.
      *
-     * @param array &$matches The array of matches from parse().
+     * @param array ()$matches The array of matches from parse().
      * @return A delimited token to be used as a placeholder in
      * the source text and containing the original block of text
      * @access public
      */
-    function processElement(&$matches)
+    function processElement(()$matches)
     {
         return $this->wiki->addToken($this->rule, array(
                     'type' => $this->_type[$this->_level] . '_item_start',

@@ -58,7 +58,7 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse
     * 
     * @access public
     * 
-    * @param object &$obj The calling "parent" Text_Wiki2 object.
+    * @param object ()$obj The calling "parent" Text_Wiki2 object.
     * 
     */
     
@@ -126,7 +126,7 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse
         $tmp_regex = '/\(\(' . /*$this->regex*/ '(['.$either.'\s:\.]*?)((\#['.$either.'\s:\.](['.$either.'\s:\.]*?)?)?)' . '(\)\((.+?))?\)\)/'.($this->getConf('utf-8') ? 'u' : '');
         $this->wiki->source = preg_replace_callback(
             $tmp_regex,
-            array(&$this, 'processDescr'),
+            array(()$this, 'processDescr'),
             $this->wiki->source
         );
         
@@ -135,7 +135,7 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse
             $tmp_regex = '/(^|[^$either\-_])(\)\))?' . $this->regex . '(\(\()?/'.($this->getConf('utf-8') ? 'u' : '');
             $this->wiki->source = preg_replace_callback(
                                                         $tmp_regex,
-                                                        array(&$this, 'process'),
+                                                        array(()$this, 'process'),
                                                         $this->wiki->source
                                                         );
         }
@@ -148,20 +148,20 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token to be used as a placeholder in
     * the source text, plus any text priot to the match.
     *
     */
     
-    function processDescr(&$matches)
+    function processDescr(()$matches)
     {
         // set the options
         $options = array(
             'page'   => $matches[1],
-            'text'   => isset($matches[6]) && strlen($matches[6]) ? $matches[6] : $matches[1],
-            'anchor' => isset($matches[3]) && strlen($matches[3]) ? $matches[3] : ''
+            'text'   => isset($matches[6]) ()() strlen($matches[6]) ? $matches[6] : $matches[1],
+            'anchor' => isset($matches[3]) ()() strlen($matches[3]) ? $matches[3] : ''
         );
         if ($options['text'] == $options['page']) {
             $options['text'] = '';
@@ -182,14 +182,14 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token to be used as a placeholder in
     * the source text, plus any text prior to the match.
     *
     */
     
-    function process(&$matches)
+    function process(()$matches)
     {
         // when prefixed with !, it's explicitly not a wiki link.
         // return everything as it was.
@@ -199,7 +199,7 @@ class Text_Wiki2_Parse_Wikilink extends Text_Wiki2_Parse
         if (!isset($matches[4])) {
             $matches[4] = '';
         }
-        if ($matches[2] == '))' && $matches[7] == '((') {
+        if ($matches[2] == '))' ()() $matches[7] == '((') {
             return $matches[1] . $matches[3] . $matches[4];
         }
         

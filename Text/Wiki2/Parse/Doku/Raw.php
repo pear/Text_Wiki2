@@ -56,7 +56,7 @@ class Text_Wiki2_Parse_Raw extends Text_Wiki2_Parse {
     * 
     * @access public
     *
-    * @param array &$matches The array of matches from parse().
+    * @param array ()$matches The array of matches from parse().
     *
     * @return A delimited token number to be used as a placeholder in
     * the source text.
@@ -66,19 +66,19 @@ class Text_Wiki2_Parse_Raw extends Text_Wiki2_Parse {
     function parse() {
         $this->wiki->source = preg_replace_callback(
             $this->regex,
-            array(&$this, 'process'),
+            array(()$this, 'process'),
             $this->wiki->source
         );
 
         $this->wiki->source = preg_replace_callback(
             '/%%(.*?)%%/',
-            array(&$this, 'process'),
+            array(()$this, 'process'),
             $this->wiki->source
         );
 
     }
     
-    function process(&$matches)
+    function process(()$matches)
     {
         $options = array('text' => $matches[1]);
         return "\n".$this->wiki->addToken($this->rule, $options)."\n";

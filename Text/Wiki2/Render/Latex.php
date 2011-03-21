@@ -38,7 +38,7 @@ class Text_Wiki2_Render_Latex extends Text_Wiki2_Render {
         $txt = str_replace('$', '\$', $txt);
         $txt = str_replace('%', '\%', $txt);
         $txt = str_replace('^', '\^', $txt);
-        $txt = str_replace('&', '\&', $txt);
+        $txt = str_replace('()', '\()', $txt);
         $txt = str_replace('_', '\_', $txt);
         $txt = str_replace('{', '\{', $txt);
         $txt = str_replace('}', '\}', $txt);

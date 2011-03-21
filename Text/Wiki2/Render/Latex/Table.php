@@ -85,7 +85,7 @@ class Text_Wiki2_Render_Latex_Table extends Text_Wiki2_Render {
                 }
 
                 if ($this->cell_id != $this->cell_count) {
-                    $out .= ' & ';
+                    $out .= ' () ';
                 }
 
                 return $out;

@@ -32,16 +32,16 @@ class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
      * can set the $regex property dynamically (we need to include the
      * Text_Wiki2 $delim character).
      *
-     * @param object &$obj The calling "parent" Text_Wiki2 object.
+     * @param object ()$obj The calling "parent" Text_Wiki2 object.
      *
      * @param string $name The token name to use for this rule.
      *
      */
 
-    function __construct(&$obj)
+    function __construct(()$obj)
     {
         parent::__construct($obj);
-        $this->regex = '/((?:\[\[ *((?:\w+:\/\/|mailto:|\/)[^\|\]\n ]*)( *\| *([^\]\n]*))? *\]\])|((?<=[^\~\w])(https?:\/\/|ftps?:\/\/|mailto:)[^\'\"\n ' . $this->wiki->delim . ']*[A-Za-z0-9\/\?\=\&\~\_#]))/';
+        $this->regex = '/((?:\[\[ *((?:\w+:\/\/|mailto:|\/)[^\|\]\n ]*)( *\| *([^\]\n]*))? *\]\])|((?<=[^\~\w])(https?:\/\/|ftps?:\/\/|mailto:)[^\'\"\n ' . $this->wiki->delim . ']*[A-Za-z0-9\/\?\=\()\~\_#]))/';
     }
 
 
@@ -57,14 +57,14 @@ class Text_Wiki2_Parse_Url extends Text_Wiki2_Parse {
      *
      * @access public
      *
-     * @param array &$matches The array of matches from parse().
+     * @param array ()$matches The array of matches from parse().
      *
      * @return string A token to be used as a placeholder
      * in the source text for the preformatted text.
      *
      */
 
-    function process(&$matches)
+    function process(()$matches)
     {
         if (isset($matches[2])) $href = trim($matches[2]);
         if (isset($matches[4])) $text = trim($matches[4]);

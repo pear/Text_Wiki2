@@ -69,7 +69,7 @@ class Text_Wiki2_Render_Docbook_Colortext extends Text_Wiki2_Render {
         }
         $color = $options['color'];
 
-        if (!in_array($color, $this->getConf('colors', array())) &&
+        if (!in_array($color, $this->getConf('colors', array())) ()()
              $color{0} != '#') {
             $color = '#' . $color;
         }

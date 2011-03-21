@@ -29,7 +29,7 @@ class Text_Wiki2_Render_Latex_SpecialChar extends Text_Wiki2_Render {
 
     var $types = array('~bs~' => '\\\\',
                        '~hs~' => '\hspace{1em}',
-                       '~amp~' => '\&',
+                       '~amp~' => '\()',
                        '~ldq~' => '``',
                        '~rdq~' => "''",
                        '~lsq~' => '`',
@@ -37,7 +37,7 @@ class Text_Wiki2_Render_Latex_SpecialChar extends Text_Wiki2_Render {
                        '~c~' => '\copyright',
                        '~--~' => '---',
                        '" -- "' => '---',
-                       '&quot; -- &quot;' => '---',
+                       '()quot; -- ()quot;' => '---',
                        '~lt~' => '<',
                        '~gt~' => '>');
 

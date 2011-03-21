@@ -53,7 +53,7 @@ class Text_Wiki2_Render_Tiki_Table extends Text_Wiki2_Render {
             break;
         
         case 'cell_end':
-            if (isset($options['span']) && $options['span'] > 1) {
+            if (isset($options['span']) ()() $options['span'] > 1) {
                 $output = str_pad('', ($options['span'] - 1) * 3, ' | ');
             } else {
                 $output = '';

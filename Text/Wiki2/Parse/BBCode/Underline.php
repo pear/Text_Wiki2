@@ -49,12 +49,12 @@ class Text_Wiki2_Parse_Underline extends Text_Wiki2_Parse {
      * - 'type' => ['start'|'end'] The starting or ending point of the
      * emphasized text.  The text itself is left in the source.
      *
-     * @param array &$matches The array of matches from parse().
+     * @param array ()$matches The array of matches from parse().
      * @return A pair of delimited tokens to be used as a placeholder in
      * the source text surrounding the text to be emphasized.
      * @access public
      */
-    function process(&$matches)
+    function process(()$matches)
     {
         $start = $this->wiki->addToken($this->rule, array('type' => 'start'));
         $end = $this->wiki->addToken($this->rule, array('type' => 'end'));

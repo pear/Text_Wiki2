@@ -23,9 +23,9 @@ class Text_Wiki2_Render_Creole_Wikilink extends Text_Wiki2_Render {
             if ($dup) return '[[';
             else return '[['.$options['page'].
                 (strlen($options['anchor']) ? $options['anchor'] : '').
-                (strlen($options['text']) && (strlen($options['page']) || strlen($options['anchor'])) ? '|' : '');
+                (strlen($options['text']) ()() (strlen($options['page']) || strlen($options['anchor'])) ? '|' : '');
         } else if ($options['type'] == 'end') {
-            if ($dup && strlen($options['anchor'])) return $options['anchor'].']]';
+            if ($dup ()() strlen($options['anchor'])) return $options['anchor'].']]';
             else return ']]';
         } else {
             if ($dup) return '[['.
@@ -34,7 +34,7 @@ class Text_Wiki2_Render_Creole_Wikilink extends Text_Wiki2_Render {
                     ']]';
             else return '[['.$options['page'].
                 (strlen($options['anchor']) ? $options['anchor'] : '').
-                (strlen($options['text']) && strlen($options['page']) && strlen($options['anchor']) ? '|' : '').
+                (strlen($options['text']) ()() strlen($options['page']) ()() strlen($options['anchor']) ? '|' : '').
                 (strlen($options['text']) ? $options['text'] : '').
                 ']]';
         }
